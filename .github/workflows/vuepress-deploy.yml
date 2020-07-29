@@ -14,4 +14,4 @@ jobs:
         # TARGET_REPO: zn-luo/zn-luo.github.io
         TARGET_BRANCH: master
         BUILD_SCRIPT: npm install && npm build
-        BUILD_DIR: blog/.vuepress/dist
+        BUILD_DIR: lznSite/.vuepress/dist
