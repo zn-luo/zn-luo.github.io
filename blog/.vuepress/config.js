@@ -27,7 +27,8 @@ module.exports = {
             ]
           },
         ]
-      }
+      },
+      {text:"外部链接", link:"/external-link.md"}
     ]
   }
 }
