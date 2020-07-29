@@ -1,4 +1,5 @@
 ---
+title: lzn site
 home: true
 heroImage: /vue-logo.png
 heroText: lzn-blog
