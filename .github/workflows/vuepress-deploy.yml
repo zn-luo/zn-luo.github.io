@@ -14,4 +14,4 @@ jobs:
         # TARGET_REPO: zn-luo/zn-luo.github.io
         # TARGET_BRANCH: gh-pages
         BUILD_SCRIPT: vuepress build blog
-        BUILD_DIR: build/dist/
+        BUILD_DIR: blog/.vuepress/dist
