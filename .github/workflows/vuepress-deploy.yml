@@ -12,6 +12,6 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         # TARGET_REPO: zn-luo/zn-luo.github.io
-        # TARGET_BRANCH: gh-pages
+        TARGET_BRANCH: master
         BUILD_SCRIPT: vuepress build blog
         BUILD_DIR: blog/.vuepress/dist
