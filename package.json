@@ -7,7 +7,7 @@
   "author": "lzn",
   "license": "MIT",
   "scripts": {
-    "build": "vuepress build blog",
-    "test": "jest"
+    "blog:dev": "vuepress dev lznSite",
+    "build": "vuepress build lznSite"
   }
 }
