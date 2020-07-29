@@ -1,6 +1,6 @@
 module.exports = {
   themeConfig:{
-    sidebar: 'auto',
+    title: 'LZN Site',
     nav:[
       {text:"主页", link: '/'},
       {text:"Github", link:"https://github.com/luo-zn"},
