@@ -1,0 +1,13 @@
+{
+  "name": "lzn-blog",
+  "version": "1.0.0",
+  "description": "lzn blog site",
+  "main": "index.js",
+  "repository": "https://github.com/zn-luo/zn-luo.github.io.git",
+  "author": "lzn",
+  "license": "MIT",
+  "scripts": {
+    "build": "vuepress build blog",
+    "test": "jest"
+  }
+}
