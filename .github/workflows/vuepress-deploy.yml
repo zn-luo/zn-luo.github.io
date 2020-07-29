@@ -13,5 +13,5 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         # TARGET_REPO: zn-luo/zn-luo.github.io
         TARGET_BRANCH: master
-        BUILD_SCRIPT: npm install && npm build
+        BUILD_SCRIPT: npm install && npm run build
         BUILD_DIR: lznSite/.vuepress/dist
