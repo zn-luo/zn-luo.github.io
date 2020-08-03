@@ -1,6 +1,10 @@
 module.exports = {
-  themeConfig:{
-    title: 'LZN Site',
+  title: 'LZN Site',
+  description: '个人站点',
+  head:[
+    ['link',{rel:" shortcut icon", type:"image/x-icon", href:`/imgs/favicon.ico`}]
+  ],
+  themeConfig:{    
     nav:[
       {text:"主页", link: '/'},
       {text:"Github", link:"https://github.com/luo-zn"},

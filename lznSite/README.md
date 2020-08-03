@@ -1,7 +1,6 @@
 ---
-title: lzn site
 home: true
-heroImage: /vue-logo.png
+heroImage: /imgs/logo.png
 heroText: lzn-blog
 tagline: lzn博客示例
 actionText: 给生活比个耶
