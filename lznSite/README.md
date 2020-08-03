@@ -1,8 +1,8 @@
 ---
 home: true
 heroImage: /imgs/logo.png
-heroText: lzn-blog
-tagline: lzn博客示例
+heroText: lzn blog
+tagline: lzn博客
 actionText: 给生活比个耶
 actionLink: /
 features:
