@@ -1,8 +1,17 @@
+const path=require("path");
+
 module.exports = {
+  configureWebpack:{
+    resolve:{
+      alias:{
+        "@vuepress-imgs": path.join(__dirname,"/imgs")
+      }
+    }
+  },
   title: 'LZN Site',
   description: '个人站点',
   head:[
-    ['link',{rel:" shortcut icon", type:"image/x-icon", href:`/imgs/favicon.ico`}]
+    ['link',{rel:"icon",  href:"/imgs/favicon.ico"}]
   ],
   themeConfig:{    
     nav:[
