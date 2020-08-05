@@ -42,6 +42,17 @@ module.exports = {
           },
         ]
       },
+      {
+        text:"数据库",
+        items:[
+          {
+            text:"mongodb",
+            items:[
+              {text:"切片集群部署", link:'/dbs/mongodb/'}
+            ]
+          },
+        ]
+      },
       {text:"外部链接", link:"/external-link.md"}
     ]
   }
