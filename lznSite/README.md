@@ -7,7 +7,7 @@ actionText: 给生活比个耶
 actionLink: /
 features:
 - title: 天道酬勤
-  details: 心想到，话说到，事做到，尽已所能。
+  details: 心想到，话说到，事做到，尽已所能。凡事预则立，不预则废。
 - title: 知识就是力量
   details: 知识就是力量，这是颠扑不破的真理。实践是验证真理的唯一标准。
 - title: 自我成长
