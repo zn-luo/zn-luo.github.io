@@ -53,6 +53,14 @@ module.exports = {
           },
         ]
       },
+      {
+        text:"运维",
+        items:[
+          {
+            text:"膜拜Netfix", link:'/devops'
+          },
+        ]
+      },
       {text:"外部链接", link:"/external-link.md"}
     ]
   }
