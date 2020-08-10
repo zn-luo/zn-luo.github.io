@@ -20,8 +20,8 @@ module.exports = {
       {
         text:"前端",
         items:[
-          {text:"Vue",link:'/frontEnd/vue'},
-          {text:"angular", link:'/frontEnd/angular'}
+          {text:"Vue",link:'/frontEnd/'},
+          {text:"angular", link:'/frontEnd/angular/'}
         ]
       },
       {
@@ -48,7 +48,7 @@ module.exports = {
           {
             text:"mongodb",
             items:[
-              {text:"切片集群部署", link:'/dbs/mongodb/'}
+              {text:"切片集群部署", link:'/dbs/mongodb/'},
             ]
           },
         ]
@@ -56,9 +56,7 @@ module.exports = {
       {
         text:"运维",
         items:[
-          {
-            text:"膜拜Netfix", link:'/devops/'
-          },
+          {text:"膜拜Netfix", link:'/devops/' },
         ]
       },
       {text:"外部链接", link:"/external-link.md"}
