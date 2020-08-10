@@ -57,7 +57,7 @@ module.exports = {
         text:"运维",
         items:[
           {
-            text:"膜拜Netfix", link:'/devops'
+            text:"膜拜Netfix", link:'/devops/'
           },
         ]
       },
