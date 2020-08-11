@@ -51,6 +51,12 @@ module.exports = {
               {text:"切片集群部署", link:'/dbs/mongodb/'},
             ]
           },
+          {
+            text:"redis",
+            items:[
+              {text:"redis持久化磁盘负载", link:'/dbs/redis/redis持久化磁盘负载'},
+            ]
+          },
         ]
       },
       {
