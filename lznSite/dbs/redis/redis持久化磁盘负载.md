@@ -4,14 +4,16 @@ redis虽为内存数据库，但为了做到服务down机重启后不丢失数�
 
 ## 问题描述
 
-1. 当数据量增加，key的操作频率增加，持久化操作变频繁，磁盘I/O 负载高。  
+1. 当请求量增长，key的操作频率增加，持久化操作变频繁后磁盘I/O 负载就会变高。  
 2. 日志会出现"Asynchronous AOF fsync is taking too long (disk is busy?). Writing the AOF buffer without waiting for fsync to complete, this may slow down Redis."
 3. redis服务运行在aws的虚拟机上，磁盘类型为ebs的st1类型，此磁盘类型的底层物理架构为IOPS偏低的机械磁盘类型。
 
 ## 监控截图
 
-1. ![openfalcon磁盘监控](/imgs/dbs/disk-io.png)
-2. ![atop磁盘监控](/imgs/dbs/atop-disk.png)
+1. openfalcon磁盘监控
+![openfalcon磁盘监控](/imgs/dbs/disk-io.png)
+2. atop磁盘监控
+![atop磁盘监控](/imgs/dbs/atop-disk.png)
 
 ## 问题分析
 
