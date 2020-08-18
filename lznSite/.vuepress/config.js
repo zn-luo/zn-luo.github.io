@@ -54,7 +54,7 @@ module.exports = {
           {
             text:"redis",
             items:[
-              {text:"redis持久化磁盘负载", link:'/dbs/redis/redis持久化磁盘负载'},
+              {text:"redis持久化磁盘负载", link:'/dbs/redis/redis-disk-load'},
             ]
           },
         ]
