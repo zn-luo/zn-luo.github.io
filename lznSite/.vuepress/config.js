@@ -63,6 +63,7 @@ module.exports = {
         text:"运维",
         items:[
           {text:"膜拜Netfix", link:'/devops/' },
+          {text:"微服务", link:'/devops/microsoft-core.md' },
         ]
       },
       {text:"外部链接", link:"/external-link.md"}
