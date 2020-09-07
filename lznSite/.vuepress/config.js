@@ -64,6 +64,7 @@ module.exports = {
         items:[
           {text:"膜拜Netfix", link:'/devops/' },
           {text:"微服务", link:'/devops/microsoft-core.md' },
+          {text:"将工作标准化", link:'/devops/standardized-systems-and-models.md' },
         ]
       },
       {text:"外部链接", link:"/external-link.md"}
