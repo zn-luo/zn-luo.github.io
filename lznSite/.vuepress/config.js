@@ -20,8 +20,8 @@ module.exports = {
       {
         text:"前端",
         items:[
-          {text:"Vue",link:'/frontEnd/'},
-          {text:"angular", link:'/frontEnd/angular/'}
+          {text:"Vue",link:'/frontEnd/'}
+          // {text:"angular", link:'/frontEnd/angular/'}
         ]
       },
       {
