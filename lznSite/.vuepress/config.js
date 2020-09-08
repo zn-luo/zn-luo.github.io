@@ -16,7 +16,7 @@ module.exports = {
   themeConfig:{    
     nav:[
       {text:"主页", link: '/'},
-      {text:"Github", link:"https://github.com/luo-zn"},
+      {text:"Github", link:"https://github.com/zn-luo/zn-luo.github.io"},
       {
         text:"前端",
         items:[
