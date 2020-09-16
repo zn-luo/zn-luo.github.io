@@ -16,12 +16,12 @@ jobs:
         BUILD_SCRIPT: npm install && npm run build
         BUILD_DIR: lznSite/.vuepress/dist
 
-    - name: vuepress deploy to gitee
-      uses: luo-zn/vuepress-deploy@master
-      env:
-        ACCESS_TOKEN: ${{ secrets.GITEE_TOKEN }}
-        # TARGET_REPO: https://gitee.com/luozn/luozn.git
-        TARGET_BRANCH: master
-        TARGET_LINK: https://${{ secrets.GITEE_USER }}:${{ secrets.GITEE_TOKEN }}@gitee.com/luozn/luozn.git
-        BUILD_SCRIPT: npm install && npm run build
-        BUILD_DIR: lznSite/.vuepress/dist
+    # - name: vuepress deploy to gitee
+    #   uses: luo-zn/vuepress-deploy@master
+    #   env:
+    #     ACCESS_TOKEN: ${{ secrets.GITEE_TOKEN }}
+    #     # TARGET_REPO: https://gitee.com/luozn/luozn.git
+    #     TARGET_BRANCH: master
+    #     TARGET_LINK: https://${{ secrets.GITEE_USER }}:${{ secrets.GITEE_TOKEN }}@gitee.com/luozn/luozn.git
+    #     BUILD_SCRIPT: npm install && npm run build
+    #     BUILD_DIR: lznSite/.vuepress/dist
