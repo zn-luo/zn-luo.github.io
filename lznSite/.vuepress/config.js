@@ -65,7 +65,8 @@ module.exports = {
           {text:"膜拜Netfix", link:'/devops/' },
           {text:"微服务", link:'/devops/microsoft-core.md' },
           {text:"将工作标准化", link:'/devops/standardized-systems-and-models.md' },
-          {text:"CMDB", link:'/devops/cmdb.md' }
+          {text:"CMDB", link:'/devops/cmdb.md' },
+          {text:"如何打造运维组织架构", link:'/devops/build-devops-structure.md' }
         ]
       },
       {
