@@ -45,3 +45,38 @@ lsof(list open files)是一个列出当前系统打开文件的工具。在linux
 * w：表示该文件被打开并处于。
 * 空格：表示该文件的状态模式为unknow，且没有锁定。
 * -：表示该文件的状态模式为unknow，且被锁定。
+
+#### 在文件状态模式后面的相关锁
+
+* N：for a Solaris NFS lock of unknown type(对于未知类型的Solaris NFS锁);
+* r：for read lock on part of the file(用于对文件的一部分进行读取锁定);
+* R：for a read lock on the entire file(整个文件的读取锁定);
+* w：for a write lock on part of the file;（文件的部分写锁）
+* W：for a write lock on the entire file;（整个文件的写锁）
+* u：for a read and write lock of any length(对于任意长度的读写锁);
+* U：for a lock of unknown type(对于未知类型的锁);
+* x：for an SCO OpenServer Xenix lock on part of the file(对于文件的sco openserver xenix锁);
+* X：for an SCO OpenServer Xenix lock on the entire file(对于整个文件的sco openserver xenix锁);
+* space：if there is no lock(如果没有锁).
+
+### 文件类型
+
+* DIR：表示目录。
+* CHR：表示字符类型。
+* BLK：块设备类型。
+* UNIX： UNIX 域套接字。
+* FIFO：先进先出 (FIFO) 队列。
+* IPv4：网际协议 (IP) 套接字。
+
+## 常用方式
+
+1. 列出所有打开的文件: lsof
+2. 查看占用文件的进程: lsof   /filepath/file
+3. 递归查看某个目录的文件信息: lsof +D /filepath/filepath2/
+4. 列出指定用户打开的文件: lsof -u userName
+5. 列出指定pid打开的文件： lsof -p 1527
+6. 查看指定进程名打开的文件： lsof -c mongo 或 lsof -c mongo -c sh
+7. 查看指定IP: lsof -i @10.0.11.14 -n
+8. 查看指定IP及端口: lsof -i @10.0.11.14:22 -n
+9. 查看指定端口: lsof -i :22 -n
+10. 查看指定协议: lsof -i UDP
