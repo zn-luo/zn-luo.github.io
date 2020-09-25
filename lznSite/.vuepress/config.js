@@ -30,13 +30,13 @@ module.exports = {
           {
             text:"linux",
             items:[
-              {text:"常用命令", link:'/linux/commonCmds'}
+              {text:"常用命令", link:'/linux/commonCmds/'}
             ]
           },
           {
             text:"设计模式",
             items:[
-              {text:"工厂",link:'/designPattern/factory'},
+              {text:"工厂",link:'/designPattern/factory/'},
               {text:"单例", link:'/designPattern/singleton'}
             ]
           },
