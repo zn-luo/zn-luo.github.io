@@ -25,7 +25,7 @@ CMDB起源于ITIL(Information Technology Infrastructure Library，信息技术�
   CMDB是IP为标识的资源管理维度，有了应用名之后就以应用为视角的管理维度。应用会涉及到的信息：  
 
   1. 应用基础信息，如应用责任人、应用的git地址等;
-  2. 应用部署涉及的苊软件包，如语言包(Java、C++、Go等)、Web容器(Tomcat、JBoss等)、Web服务器(Apache、Nginx等)、基础组件(各种agent、如日志、监控、系统 维护类等);
+  2. 应用部署涉及的软件包，如语言包(Java、C++、Go等)、Web容器(Tomcat、JBoss等)、Web服务器(Apache、Nginx等)、基础组件(各种agent、如日志、监控、系统 维护类等);
   3. 应用部署涉及的目录，如运维脚本目录、日志目录、应用包目录、临时目录等;
   4. 应用运行涉及的各项脚本和命令，如启停脚本、健康监测脚本;
   5. 应用运行时的参数配置，如Java的jvm参数，特别重要的是GC方式、新生代、老生代、永生代的堆内存大小配置等;
