@@ -31,7 +31,7 @@ CMDB起源于ITIL(Information Technology Infrastructure Library，信息技术�
   5. 应用运行时的参数配置，如Java的jvm参数，特别重要的是GC方式、新生代、老生代、永生代的堆内存大小配置等;
   6. 应用运行的端口号;
   7. 应用日志的输出规范;
-  8. 其实。
+  8. 其它。
 
 ## 如何在CMDB中落地应用概念
 
