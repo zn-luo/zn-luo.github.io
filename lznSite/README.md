@@ -1,8 +1,8 @@
 ---
 home: true
 heroImage: /imgs/logo.png
-heroText: lzn博客 
-tagline: blog
+heroText: 学习与笔记 
+tagline: 好记性不如烂笔头
 actionText: 给生活比个耶
 actionLink: /
 features:
