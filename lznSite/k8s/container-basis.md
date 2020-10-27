@@ -3,6 +3,11 @@
 容器其实是一种沙盒技术。应用可被装进沙盒里，这样应用与应用之间能不相互干扰，方便在各种环境移动部署，这是PASS最理想状态。  
 利用Namespace技术进行环境隔离，使用Linux Cgroups进行进程资源的控制。
 
+一个正在运行的 Linux 容器，其实可以被“一分为二”地看待：
+
+1. 一组联合挂载在 /var/lib/docker/aufs/mnt 上的 rootfs，这一部分我们称为“容器镜 像”（Container Image），是容器的静态视图；
+2. 一个由 Namespace+Cgroups 构成的隔离环境，这一部分我们称为“容器运行 时”（Container Runtime），是容器的动态视图。
+
 ## 容器的优势
 
 1. 容器是基于Namespace 技术实现隔离的进程，本质上还是操作系统上的进程，额外开销小。
