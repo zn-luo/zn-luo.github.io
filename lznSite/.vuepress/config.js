@@ -71,6 +71,12 @@ module.exports = {
         ]
       },
       {
+        text:"算法",
+        items:[
+          {text:"数据结构与算法", link:'/algorithm/data-structure.md' }
+        ]
+      },
+      {
         text:"k8s",
         items:[
           {text:"容器基础", link:'/k8s/container-basis.md' },
