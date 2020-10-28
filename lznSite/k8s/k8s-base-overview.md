@@ -1,6 +1,7 @@
-# K8S概述
+# K8S概述[1]
 
 Kubernetes能提供路由网关、水平扩展、监控、备份、灾难恢复等一系列运维能力。
+
 
 ## k8s架构
 
@@ -25,3 +26,6 @@ k8s架构主要由Master和Node两种节点组成，即控制节点和计算节�
 kubelet还通过gRPC协议同一个叫Device Plugin的插件进行交互。这是k8s项目用来管理GPU等宿主机物理设备的主要组件。
 
 kubelet还会调用网络插件和存储插件为容器配置网络和持久化存储。这两个插件与kubelet进行交互的接口，分别是CNI(Container Networking Interface)和CSI(Container Storage Interface)。
+
+
+1 笔记来记录于张磊老师的课程
