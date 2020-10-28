@@ -9,5 +9,10 @@
   "scripts": {
     "lznSite:dev": "vuepress dev lznSite",
     "build": "vuepress build lznSite"
+  },
+  "dependencies": {
+    "vue": "^2.6.12",
+    "vuepress": "^1.5.4"
   }
+
 }
