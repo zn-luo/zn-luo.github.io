@@ -7,4 +7,4 @@
     * 高级数据结构：栈stack, 队列queue, 双端队列deque,集合set, 映射map(hash或map) 等
 * 二维:
     * 基础：树tree,  图graph
-    * 高级：
+    * 高级：二叉搜索树binary search tree
