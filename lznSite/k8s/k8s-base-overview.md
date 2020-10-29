@@ -26,5 +26,3 @@ k8s架构主要由Master和Node两种节点组成，即控制节点和计算节�
 kubelet还通过gRPC协议同一个叫Device Plugin的插件进行交互。这是k8s项目用来管理GPU等宿主机物理设备的主要组件。
 
 kubelet还会调用网络插件和存储插件为容器配置网络和持久化存储。这两个插件与kubelet进行交互的接口，分别是CNI(Container Networking Interface)和CSI(Container Storage Interface)。
-
-
