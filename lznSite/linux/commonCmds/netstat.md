@@ -55,7 +55,7 @@ LAST_ACK    | SOCKET在CLOSE_WAIT状态时，发送FIN报文后，等待对方�
 1. 查找请求数前20个IP（常用于查找攻来源）
 
    ```linux
-   netstat -anlp|grep 80|grep tcp|awk '{print $5}'|awk -F: '{print $1}'|sort|uniq -c|sort -nr|head -n20
+   netstat -anlp |grep 80 |grep tcp |awk '{print $5}' |awk -F: '{print $1}' |sort |uniq -c |sort -nr |head -n20
    ```
 
 2. 查找较多time_wait连接
