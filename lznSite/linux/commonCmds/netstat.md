@@ -10,13 +10,16 @@ netstat -ant|awk '/^tcp/ {++S[$NF]} END {for(a in S) print (a,S[a])}'
 
 结果输出：
 
-LAST_ACK 34  
-SYN_RECV 328  
-ESTABLISHED 80  
-FIN_WAIT1 229  
-FIN_WAIT2 36  
-CLOSING 34  
-TIME_WAIT 16722  
+LAST_ACK 63  
+LISTEN 39  
+SYN_RECV 75  
+CLOSE_WAIT 46  
+ESTABLISHED 96754  
+FIN_WAIT1 60  
+FIN_WAIT2 59  
+CLOSING 11  
+SYN_SENT 98  
+TIME_WAIT 70  
 
 ## TCP连接状态表说明
 
