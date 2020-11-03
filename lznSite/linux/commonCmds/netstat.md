@@ -49,3 +49,23 @@ TIME_WAIT   | SOCKET在FIN_WAIT_2状态时，收到了对方的FIN报文，并�
 CLOSING     | 两边同时尝试关闭。
 CLOSE_WAIT  | 表示正在等待关闭。服务端收到客户端的FIN报文请求断开后，给客户端响应ACK确认服务，此时服务端TCP进入CLOSE_WAIT状态。等待服务端发送未传完的数据后再关闭服务端与客户端方向的连接。
 LAST_ACK    | SOCKET在CLOSE_WAIT状态时，发送FIN报文后，等待对方的ACK报文的时候，就处于LAST_ACK状态。当收到对方的ACK报文后，也就可以进入到CLOSED 可用状态了。
+
+## 常用用法
+
+1. 查找请求数前20个IP（常用于查找攻来源）
+
+   ```linux
+   netstat -anlp|grep 80|grep tcp|awk '{print $5}'|awk -F: '{print $1}'|sort|uniq -c|sort -nr|head -n20
+   ```
+
+2. 查找较多time_wait连接
+
+   ```linux
+   netstat -n |grep TIME_WAIT |awk '{print $5}' |sort |uniq -c |sort -rn 
+   ```
+  
+3. 找查较多的SYN连接
+
+   ```linux
+   netstat -an | grep SYN | awk '{print $5}' | awk -F: '{print $1}' | sort | uniq -c | sort -nr
+   ```
