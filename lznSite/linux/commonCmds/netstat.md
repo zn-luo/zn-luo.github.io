@@ -2,6 +2,16 @@
 
 netstat 命令用于显示各种网络相关信息，如网络连接，路由表，接口状态 (Interface Statistics)，masquerade 连接，多播成员 (Multicast Memberships) 等等。
 
+## 参数说明
+
+* -a 显示所有套接字
+* -t (tcp) 仅显示tcp相关选项
+* -u (udp)仅显示udp相关选项
+* -n 拒绝显示别名，能显示数字的全部转化为数字
+* -l 仅列出在Listen(监听)的服务状态
+* -p 显示建立相关链接的程序名
+* -s 显示网络统计数据
+
 ## 查询TCP连接数
 
 ```bash
