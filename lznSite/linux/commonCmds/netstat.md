@@ -61,7 +61,7 @@ LAST_ACK    | SOCKET在CLOSE_WAIT状态时，发送FIN报文后，等待对方�
 2. 查找较多time_wait连接
 
    ```linux
-   netstat -n |grep TIME_WAIT |awk '{print $5}' |sort |uniq -c |sort -rn 
+   netstat -n |grep TIME_WAIT |awk '{print $5}' |sort |uniq -c |sort -rn  
    ```
   
 3. 找查较多的SYN连接
