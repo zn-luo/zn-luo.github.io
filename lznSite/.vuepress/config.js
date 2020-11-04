@@ -37,7 +37,7 @@ module.exports = {
             text:"设计模式",
             items:[
               {text:"工厂",link:'/designPattern/factory/'},
-              {text:"单例", link:'/designPattern/singleton'}
+              {text:"单例", link:'/designPattern/singleton/'}
             ]
           },
         ]
