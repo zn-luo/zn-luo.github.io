@@ -80,7 +80,8 @@ module.exports = {
         text:"k8s",
         items:[
           {text:"容器基础", link:'/k8s/container-basis.md' },
-          {text:"K8S概述", link:'/k8s/k8s-base-overview.md' }
+          {text:"K8S概述", link:'/k8s/k8s-base-overview.md' },
+          {text:"修改docker与kubelet的Cgroup驱动", link:'/k8s/change-cgroup.md' }
         ]
       },
       {
