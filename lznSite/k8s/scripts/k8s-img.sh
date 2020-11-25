@@ -8,7 +8,8 @@ for imageName in ${images[@]} ; do
   # docker pull registry.cn-hangzhou.aliyuncs.com/k8sth/$imageName
   # docker tag registry.cn-hangzhou.aliyuncs.com/k8sth/$imageName k8s.gcr.io/$imageName
   # docker tag registry.cn-hangzhou.aliyuncs.com/k8sth/$imageName k8simgs/$imageName
-  docker push k8simgs/$imageName
+  docker pull k8simgs/$imageName
+  docker tag k8simgs/$imageName k8s.gcr.io/$imageName
   #docker rmi registry.cn-hangzhou.aliyuncs.com/k8sth/$imageName
 done
 
