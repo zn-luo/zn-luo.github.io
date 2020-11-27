@@ -1,5 +1,5 @@
 [master]
-node[1:2] ansible_ssh_user=lzn ansible_ssh_pass="123456"
+node1 ansible_ssh_user=lzn ansible_ssh_pass="123456"
 
 [node]
-node3 ansible_ssh_user=lzn ansible_ssh_pass="123456"
+node[2:3] ansible_ssh_user=lzn ansible_ssh_pass="123456"

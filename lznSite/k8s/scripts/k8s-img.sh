@@ -14,3 +14,5 @@ for imageName in ${images[@]} ; do
 done
 
 #https://www.cnblogs.com/cocowool/p/kubeadm_install_kubernetes.html
+
+#https://germaniumhq.com/2019/02/14/2019-02-14-Disabling-Swap-for-Kubernetes-in-an-Ansible-Playbook/

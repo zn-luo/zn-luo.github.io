@@ -7,3 +7,5 @@ function ansibleCmd(){
 }
 #ansible-playbook -i ./k8s-inventory  ./kube-install.yml --extra-vars "ansible_sudo_pass=123456"
 ansibleCmd "$*"
+
+# kubeadm init  --image-repository=docker.io/k8simgs
