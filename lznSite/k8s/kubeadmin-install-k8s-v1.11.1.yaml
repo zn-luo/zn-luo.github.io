@@ -1,0 +1,6 @@
+# kubeadmin 安装k8s v.111.1
+
+## 环境配置
+Ubuntu 18.04.2 LTS 单机可用资源建议2核CPU、8GB内存或以上，
+至少两块磁盘，一块系统盘，一块数据盘用于安装ceph的osd
+docker-ce 版本为 18.06.3~ce~3-0~ubuntu

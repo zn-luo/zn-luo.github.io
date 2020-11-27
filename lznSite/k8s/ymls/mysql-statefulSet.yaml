@@ -164,6 +164,6 @@ spec:
       resources:
         requests:
           storage: 10Gi
-
 # https://kubernetes.io/docs/tasks/run-application/run-replicated-stateful-application/#statefulset
 # https://github.com/rook/rook/blob/master/Documentation/ceph-common-issues.md
+# https://kubernetes.io/zh/docs/tasks/administer-cluster/change-default-storage-class/
