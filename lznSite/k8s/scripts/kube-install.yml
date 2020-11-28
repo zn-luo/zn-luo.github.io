@@ -12,9 +12,22 @@
   gather_facts: false
   become: true
   tasks:
-    - name: Distribution
-      debug: msg="{{ ansible_distribution }}"
+    - name: inventory_hostname 
+      debug: msg="{{ inventory_hostname }}"
 
+    - name: Set hostname 
+      hostname: 
+        name: "{{ inventory_hostname }}"
+
+    - name: Add IP address of all hosts to all hosts
+      lineinfile:
+        dest: /etc/hosts
+        regexp: '.*{{ item }}$'
+        line: "{{ hostvars[item].ansible_host }} {{item}}"
+        state: present
+      when: hostvars[item].ansible_host is defined
+      with_items: "{{ groups.all }}"
+      
     - name: Disable SWAP since kubernetes can't work with swap enabled (1/2)
       shell: |
         swapoff -a
@@ -95,7 +108,7 @@
         - name: Install kubectl=1.11.1-00
           apt:
             update_cache: yes
-            name: kubectl=1.11.1-00
+            name: kubectl=1.11.0-00
             state: present
       when:
         - ansible_distribution == "Ubuntu"
