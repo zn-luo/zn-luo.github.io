@@ -59,7 +59,7 @@
       when:
         - ansible_distribution == "Ubuntu"
 
-    - name: Pull kube components image  
+    - name: Pull kube main components image  
       vars:
         k8sVersion: v1.11.1
         k8sSourceRepo: k8simgs
@@ -73,6 +73,19 @@
         - kube-controller-manager-amd64
         - kube-apiserver-amd64
 
+    - name: Pull kube other components image  
+      vars:
+        k8sSourceRepo: k8simgs
+        k8sDestRepo: k8s.gcr.io
+      shell: |
+            docker pull {{k8sSourceRepo}}/{{item}}
+            docker tag {{k8sSourceRepo}}/{{item}} {{k8sDestRepo}}/{{item}}          
+      with_items:
+        - etcd-amd64:3.2.18 
+        - coredns:1.1.3 
+        - pause:3.1 
+        - kubernetes-dashboard-amd64:v1.8.3
+
 - name: Master nodes
   hosts: master
   gather_facts: False
@@ -81,6 +94,7 @@
     - block:
         - name: Install kubectl=1.11.1-00
           apt:
+            update_cache: yes
             name: kubectl=1.11.1-00
             state: present
       when:
