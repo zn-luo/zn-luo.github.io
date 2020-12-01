@@ -9,6 +9,9 @@ function ansibleCmd(){
 
 function installK8s(){
   ansibleCmd ansible-playbook -i ./k8s-inventory  ./kube-install.yml
+  mkdir -p $HOME/.kube 
+  cp /etc/kubernetes/admin.conf $HOME/.kube/config 
+  chown $(id -u):$(id -g) $HOME/.kube/config
 }
 
 installK8s
