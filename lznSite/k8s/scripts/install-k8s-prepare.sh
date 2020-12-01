@@ -12,3 +12,6 @@ ansibleCmd "$*"
 # mkdir -p $HOME/.kube 
 # sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config 
 # sudo chown $(id -u):$(id -g) $HOME/.kube/config 
+
+# 部署网络插件 
+# kubectl apply -f https://git.io/weave-kube-1.6 ==> kubectl apply -f weave-daemonset-k8s-1.7.yaml

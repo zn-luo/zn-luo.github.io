@@ -1,4 +1,5 @@
 ---
+#ansible version 2.9.9
 - name: Gather facts for all hosts
   hosts: all
   gather_facts: false
@@ -12,20 +13,19 @@
   gather_facts: false
   become: true
   tasks:
-    - name: inventory_hostname 
-      debug: msg="{{ inventory_hostname }}"
-
     - name: Set hostname 
       hostname: 
         name: "{{ inventory_hostname }}"
+
+    # - name: hostvars 
+    #   debug: msg="{{ hostvars['node2'] }}"
 
     - name: Add IP address of all hosts to all hosts
       lineinfile:
         dest: /etc/hosts
         regexp: '.*{{ item }}$'
-        line: "{{ hostvars[item].ansible_host }} {{item}}"
+        line: "{{ hostvars[item]['ansible_default_ipv4']['address'] }} {{item}}"
         state: present
-      when: hostvars[item].ansible_host is defined
       with_items: "{{ groups.all }}"
       
     - name: Disable SWAP since kubernetes can't work with swap enabled (1/2)
@@ -37,6 +37,16 @@
         path: /etc/fstab
         regexp: '^([^#].*?\sswap\s+sw\s+.*)$'
         replace: '# \1'
+    
+    - name: load missing kernel modules 
+      modprobe:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - ip_vs 
+        - ip_vs_rr 
+        - ip_vs_wrr 
+        - ip_vs_sh
 
     - block:    
         - name: apt-key add download.docker.com gpg 
@@ -72,7 +82,7 @@
       when:
         - ansible_distribution == "Ubuntu"
 
-    - name: Pull kube main components image  
+    - name: Pull kube main component images  
       vars:
         k8sVersion: v1.11.1
         k8sSourceRepo: k8simgs
@@ -86,7 +96,7 @@
         - kube-controller-manager-amd64
         - kube-apiserver-amd64
 
-    - name: Pull kube other components image  
+    - name: Pull kube other component images  
       vars:
         k8sSourceRepo: k8simgs
         k8sDestRepo: k8s.gcr.io
@@ -99,25 +109,46 @@
         - pause:3.1 
         - kubernetes-dashboard-amd64:v1.8.3
 
-- name: Master nodes
-  hosts: master
+- name: kubeadm init
+  hosts: init-node
   gather_facts: False
   become: true
   tasks:
+    - name: kubeadm init
+      shell: |
+        kubeadm reset -f
+        kubeadm init --config kubeadm.yaml 
+      ignore_errors: true
+      register: kubeadm_init_res
     - block:
-        - name: Install kubectl=1.11.1-00
-          apt:
-            update_cache: yes
-            name: kubectl=1.11.0-00
-            state: present
+        - name: prepare kube config
+          shell: |
+                mkdir -p $HOME/.kube 
+                cp /etc/kubernetes/admin.conf $HOME/.kube/config 
+                chown $(id -u):$(id -g) $HOME/.kube/config 
+
+        - name: deploy weave net
+          shell: |
+                kubectl apply -f weave-daemonset-k8s-1.7.yaml
       when:
-        - ansible_distribution == "Ubuntu"
+        - kubeadm_init_res is defined
+        - kubeadm_init_res.changed
+        - "'kubeadm join' in kubeadm_init_res.stdout_lines[-1]"
 
 - name: Node(Worker) nodes
   hosts: node
   gather_facts: False
   become: true
   tasks:
-    - name: Get os release  info
-      raw: cat /etc/os-release
-      register: os_release
+    - name: hostvars
+      debug: msg="{{ hostvars[groups['init-node'][0]].kubeadm_init_res.stdout_lines[-1] |trim }}"
+      
+    - name: kubeadm reset
+      raw: kubeadm reset -f
+
+    - name: kubeadm join
+      raw: "{{ hostvars[groups['init-node'][0]].kubeadm_init_res.stdout_lines[-1] |trim }}"
+      when:
+        - hostvars[groups['init-node'][0]].kubeadm_init_res is defined
+        - hostvars[groups['init-node'][0]].kubeadm_init_res.changed
+        - "'kubeadm join' in hostvars[groups['init-node'][0]].kubeadm_init_res.stdout_lines[-1]"
