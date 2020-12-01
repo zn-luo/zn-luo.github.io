@@ -5,8 +5,13 @@
 function ansibleCmd(){
   docker run -it --network host --rm -v $(pwd):$(pwd) -w $(pwd) jenner/ansible-alpine:2.9.9 $*
 }
-#ansible-playbook -i ./k8s-inventory  ./kube-install.yml --extra-vars "ansible_sudo_pass=123456"
-ansibleCmd "$*"
+
+
+function installK8s(){
+  ansibleCmd ansible-playbook -i ./k8s-inventory  ./kube-install.yml
+}
+
+installK8s
 
 # kubeadm init --config kubeadm.yaml 
 # mkdir -p $HOME/.kube 
