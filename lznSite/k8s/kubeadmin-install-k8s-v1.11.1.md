@@ -1,5 +1,7 @@
 # kubeadmin 安装k8s v.111.1
 
+此部署方案使用ansible来进行跨主机部署
+
 ## 部署准备
 
 资源   |  配置  |
@@ -19,3 +21,31 @@ kubelet   |        v1.11.1        |
 kubectl   |        v1.11.1        |
 
 备注：保证服务器之前网络互通，可以访问外网，docker.io
+
+## 下载部署所需文件
+
+1. install-docker-ce.sh
+2. install-k8s.sh
+3. k8s-inventory
+4. kube-install.yml
+5. kubeadm.yaml
+6. weave-daemonset-k8s-1.7.yaml
+7. k8s-dashboard-v1.10.1.yaml
+8. rook-ceph-common-1.3.yaml
+9. rook-ceph-operator-1.3.yaml
+10. rook-ceph-cluster-1.3.yaml
+
+备注： 所有文件应该下载在相同目录
+
+## 安装部署k8s v1.11.1
+
+进入刚才下载部署所需的文件目录,执行如下操作
+
+1. 编辑k8s-inventory，配置好主机名(在当前主机/etc/hosts出现的主机名)，ssh用户名密码等
+
+2. 执行如下命令:
+
+```bash
+bash install-docker-ce.sh #如果已经安装docker-ce可不用执行
+bash install-k8s.sh
+```
