@@ -49,5 +49,5 @@ kubectl   |        v1.11.1        |
 
 ```bash
 bash install-docker-ce.sh installDockerce #如果已经安装docker-ce可不用执行
-bash install-k8s.sh           #此部署脚本可重执行，如果遇到网络问题突然中断可重复执行
+bash install-k8s.sh           #此部署脚本可重复执行，如果遇到网络问题突然中断可重复执行
 ```
