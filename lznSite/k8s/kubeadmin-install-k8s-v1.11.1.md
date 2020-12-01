@@ -1,6 +1,7 @@
 # kubeadmin 安装k8s v.111.1
 
-此部署方案使用ansible来进行跨主机安装所需软件及修改相应配置,基本所有的部署流程都已经kube-install.yml实现
+此部署方案使用ansible来进行跨主机安装所需软件及修改相应配置,基本所有的部署流程都已经kube-install.yml实现。  
+网络插件使用weave，存储插件使用基于rook的ceph存储。
 
 ## 部署准备
 
