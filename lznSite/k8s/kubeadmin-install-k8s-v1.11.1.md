@@ -48,6 +48,6 @@ kubectl   |        v1.11.1        |
 2. 执行如下命令:
 
 ```bash
-bash install-docker-ce.sh #如果已经安装docker-ce可不用执行
+bash install-docker-ce.sh installDockerce #如果已经安装docker-ce可不用执行
 bash install-k8s.sh
 ```
