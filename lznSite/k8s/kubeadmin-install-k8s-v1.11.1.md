@@ -26,16 +26,16 @@ kubectl   |        v1.11.1        |
 
 ## 下载部署所需文件
 
-1. install-docker-ce.sh
-2. install-k8s.sh
-3. k8s-inventory
-4. kube-install.yml
-5. kubeadm.yaml
-6. weave-daemonset-k8s-1.7.yaml
-7. k8s-dashboard-v1.10.1.yaml
-8. rook-ceph-common-1.3.yaml
-9. rook-ceph-operator-1.3.yaml
-10. rook-ceph-cluster-1.3.yaml
+1. [install-docker-ce.sh](/files/k8s/scripts/install-docker-ce.sh)
+2. [install-k8s.sh](/files/k8s/scripts/install-k8s.sh)
+3. [k8s-inventory](/files/k8s/scripts/k8s-inventory)
+4. [kube-install.yml](/files/k8s/ymls/kube-install.yml)
+5. [kubeadm.yaml](/files/k8s/ymls/kubeadm.yaml)
+6. [weave-daemonset-k8s-1.7.yaml](/files/k8s/ymls/weave-daemonset-k8s-1.7.yaml)
+7. [k8s-dashboard-v1.10.1.yaml](/files/k8s/ymls/k8s-dashboard-v1.10.1.yaml)
+8. [rook-ceph-common-1.3.yaml](/files/k8s/ymls/rook-ceph-common-1.3.yaml)
+9. [rook-ceph-operator-1.3.yaml](/files/k8s/ymls/rook-ceph-operator-1.3.yaml)
+10. [rook-ceph-cluster-1.3.yaml](/files/k8s/ymls/rook-ceph-cluster-1.3.yaml)
 
 备注： 所有文件应该下载在相同目录
 
