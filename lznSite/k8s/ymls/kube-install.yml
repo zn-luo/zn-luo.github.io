@@ -145,9 +145,7 @@
   gather_facts: False
   become: true
   tasks:
-    - name: hostvars
-      debug: msg="{{ hostvars[groups['init-node'][0]].kubeadm_init_res.stdout_lines[-1] |trim }}"
-      
+        
     - name: kubeadm reset
       raw: kubeadm reset -f
 
