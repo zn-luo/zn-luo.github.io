@@ -10,3 +10,25 @@ k8s集群使用pods的主要两种方式：
 
 1. pod运行单个容器。
 2. pod运行多个需要协调工作的容器：Pod可以封装由多个位于同一位置的紧密耦合且需要共享资源的容器组成的应用程序。这些位于同一位置的容器形成了单个内聚服务单元。如一个容器将存储在共享卷中的数据向外提供服务，而另一个sidecar容器刷新或更新这些文件。Pod将这些容器、存储资源和短暂的网络标识包装为一个单独的单元。
+
+## pod几个重要字段的含义和用法
+
+1. [NodeSelector](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)： 此字段的作用是将 Pod 与 Node 进行绑定的字段。
+
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: nginx
+      labels:
+        env: test
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        imagePullPolicy: IfNotPresent
+      nodeSelector:
+        disktype: ssd
+    ```
+  
+    意味着这个 Pod 永远只能运行在携带了“disktype: ssd”标签（Label）的节点 上；否则，它将调度失败。

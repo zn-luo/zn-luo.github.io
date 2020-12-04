@@ -16,7 +16,13 @@ module.exports = {
   themeConfig:{    
     nav:[
       {text:"主页", link: '/'},
-      {text:"Github", link:"https://github.com/zn-luo/zn-luo.github.io"},
+      {
+        text:"开源站点",
+        items:[
+          {text:"Github", link:"https://github.com/zn-luo/zn-luo.github.io"},
+          {text:"OSCHINA", link:"https://my.oschina.net/jennerlo"},
+        ]
+      },      
       {
         text:"前端",
         items:[
