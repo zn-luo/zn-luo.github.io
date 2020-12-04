@@ -13,7 +13,7 @@ k8s集群使用pods的主要两种方式：
 
 ## pod几个重要字段的含义和用法
 
-1. [NodeSelector](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)： 此字段的作用是将 Pod 与 Node 进行绑定的字段。
+1. [NodeSelector](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)： 此字段的作用是将 Pod 与 Node 进行绑定的字段。如下所示:
 
     ```yaml
     apiVersion: v1
@@ -32,3 +32,32 @@ k8s集群使用pods的主要两种方式：
     ```
   
     意味着这个 Pod 永远只能运行在携带了“disktype: ssd”标签（Label）的节点 上；否则，它将调度失败。
+
+2. [HostAliases](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/): 定义 Pod 的 hosts 文件（比如 /etc/hosts）里的内容。如下所示:
+
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: hostaliases-pod
+    spec:
+      restartPolicy: Never
+      hostAliases:
+      - ip: "127.0.0.1"
+        hostnames:
+        - "foo.local"
+        - "bar.local"
+      - ip: "10.1.2.3"
+        hostnames:
+        - "foo.remote"
+        - "bar.remote"
+      containers:
+      - name: cat-hosts
+        image: busybox
+        command:
+        - cat
+        args:
+        - "/etc/hosts"
+    ```
+
+    在这个 Pod 的 YAML 文件中，设置了一组 IP 和 hostname 的数据。这个 Pod 启动后，/etc/hosts 文件的内容将如下所示：
