@@ -56,5 +56,28 @@ k8s集群使用pods的主要两种方式：
         - "/etc/hosts"
     ```
 
-    在这个 Pod 的 YAML 文件中，设置了一组 IP 和 hostname 的数据。这个 Pod 启动后，/etc/hosts 文件的内容将如下所示：  
-    ![hostAliases](/imgs/k8s/hostaliases-pod.png)
+    在这个 Pod 的 YAML 文件中，设置了一组 IP 和 hostname 的数据。这个 Pod 启动后，/etc/hosts 文件的内容将如下所示,最下面两行记录，就是通过 HostAliases 字段为 Pod 设置的：  
+    ![hostAliases](/imgs/k8s/hostaliases-pod.png)  
+    备注：在 Kubernetes 项目中，如果要设置 hosts 文件里的内容，一定要通过HostAliases设置。
+
+3. [shareProcessNamespace](https://kubernetes.io/docs/tasks/configure-pod-container/share-process-namespace/)
+
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: nginx
+    spec:
+      shareProcessNamespace: true
+      containers:
+      - name: nginx
+        image: nginx
+      - name: shell
+        image: busybox
+        securityContext:
+          capabilities:
+            add:
+            - SYS_PTRACE
+        stdin: true
+        tty: true
+    ```
