@@ -60,7 +60,7 @@ k8s集群使用pods的主要两种方式：
     ![hostAliases](/imgs/k8s/hostaliases-pod.png)  
     备注：在 Kubernetes 项目中，如果要设置 hosts 文件里的内容，一定要通过HostAliases设置。
 
-3. [shareProcessNamespace](https://kubernetes.io/docs/tasks/configure-pod-container/share-process-namespace/)
+3. [shareProcessNamespace](https://kubernetes.io/docs/tasks/configure-pod-container/share-process-namespace/): Pod的设计目的是要让它里面的容器尽可能多地共享 Linux Namespace，仅保留必要的隔离和限制能力，所以凡是跟容器的 Linux Namespace 相关的属性，也一定是 Pod 级别的设置。这样Pod就能模拟出虚拟机里程序间的关系效果。
 
     ```yaml
     apiVersion: v1
