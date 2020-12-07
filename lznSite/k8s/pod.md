@@ -56,4 +56,5 @@ k8s集群使用pods的主要两种方式：
         - "/etc/hosts"
     ```
 
-    在这个 Pod 的 YAML 文件中，设置了一组 IP 和 hostname 的数据。这个 Pod 启动后，/etc/hosts 文件的内容将如下所示：
+    在这个 Pod 的 YAML 文件中，设置了一组 IP 和 hostname 的数据。这个 Pod 启动后，/etc/hosts 文件的内容将如下所示：  
+    ![hostAliases](/imgs/k8s/hostaliases-pod.png)
