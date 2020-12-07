@@ -43,14 +43,10 @@ k8s集群使用pods的主要两种方式：
     spec:
       restartPolicy: Never
       hostAliases:
-      - ip: "127.0.0.1"
+      - ip: "10.0.1.2"
         hostnames:
-        - "foo.local"
-        - "bar.local"
-      - ip: "10.1.2.3"
-        hostnames:
-        - "foo.remote"
-        - "bar.remote"
+        - "rs0.mongo"
+        - "rs1.mongo"
       containers:
       - name: cat-hosts
         image: busybox
