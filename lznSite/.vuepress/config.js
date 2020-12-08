@@ -16,7 +16,13 @@ module.exports = {
   themeConfig:{    
     nav:[
       {text:"主页", link: '/'},
-      {text:"Github", link:"https://github.com/zn-luo/zn-luo.github.io"},
+      {
+        text:"开源站点",
+        items:[
+          {text:"Github", link:"https://github.com/zn-luo/zn-luo.github.io"},
+          {text:"OSCHINA", link:"https://my.oschina.net/jennerlo"},
+        ]
+      },      
       {
         text:"前端",
         items:[
@@ -82,7 +88,9 @@ module.exports = {
         items:[
           {text:"容器基础", link:'/k8s/container-basis.md' },
           {text:"K8S概述", link:'/k8s/k8s-base-overview.md' },
-          {text:"修改docker与kubelet的Cgroup驱动", link:'/k8s/change-cgroup.md' }
+          {text:"pod", link:'/k8s/pod.md' },
+          {text:"修改docker与kubelet的Cgroup驱动", link:'/k8s/change-cgroup.md' },
+          {text:"kubeadmin+ansible安装k8s v.111.1", link:'/k8s/kubeadmin-install-k8s-v1.11.1.md' }
         ]
       },
       {
