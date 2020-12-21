@@ -1,5 +1,7 @@
 # [keepalived](https://www.keepalived.org/index.html)
 
+Keepalived是一个用C语言编写的路由软件。可以实现服务架构的负载均衡和高可用。
+
 ## [容器化运行](https://github.com/acassen/keepalived/tree/master/docker)
 
 docker run --name keepalived --cap-add=NET_ADMIN --net=host -d keepalived
