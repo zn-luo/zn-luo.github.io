@@ -48,8 +48,11 @@ vrrp_instance VI_1 {
     virtual_ipaddress { #设置虚拟IP地址，会随着state的变化而增删，当state为master时添加，当state为backup时删除。
         192.168.11.5 dev eth1 label eth1:1
     }
+    track_script {  
+        check_nginx  
+    }
 }
-vrrp_script check_haproxy {  
+vrrp_script check_nginx {  
     script "/etc/keepalived/nginx_check.sh"  #检测 nginx 状态的脚本路径
     interval 2  #检测时间间隔,每2秒检测一次
     weight -5  #检测失败(脚本执行状态码返回非0)则优先级减5
