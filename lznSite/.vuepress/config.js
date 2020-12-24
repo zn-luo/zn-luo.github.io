@@ -73,7 +73,7 @@ module.exports = {
           {text:"将工作标准化", link:'/devops/standardized-systems-and-models.md' },
           {text:"CMDB", link:'/devops/cmdb.md' },
           {text:"如何打造运维组织架构", link:'/devops/build-devops-structure.md' },
-          {text:"高可用架构的探索与实现", link:'/devops/ha-architecture-exploration-implementation.md' }
+          {text:"高可用架构的探索与实现", link:'/devops/ha-architecture-exploration-implementation.md' },
           {text:"高可用组件keepalived", link:'/devops/keepalived.md' }
         ]
       },
@@ -81,7 +81,7 @@ module.exports = {
         text:"算法",
         items:[
           {text:"数据结构与算法", link:'/algorithm/data-structure.md' },
-          {text:"时间复杂度和空间复杂度", link:'/algorithm/time-space-complexity.md' }
+          {text:"时间复杂度", link:'/algorithm/time-complexity.md' }
         ]
       },
       {
