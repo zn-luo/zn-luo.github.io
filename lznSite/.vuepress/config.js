@@ -74,7 +74,8 @@ module.exports = {
           {text:"CMDB", link:'/devops/cmdb.md' },
           {text:"如何打造运维组织架构", link:'/devops/build-devops-structure.md' },
           {text:"高可用架构的探索与实现", link:'/devops/ha-architecture-exploration-implementation.md' },
-          {text:"高可用组件keepalived", link:'/devops/keepalived.md' }
+          {text:"高可用组件keepalived", link:'/devops/keepalived.md' },
+          {text:"日志文件管理工具logrotate", link:'/devops/logrotate.md' }
         ]
       },
       {
