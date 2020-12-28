@@ -82,7 +82,8 @@ module.exports = {
         text:"算法",
         items:[
           {text:"数据结构与算法", link:'/algorithm/data-structure.md' },
-          {text:"时间复杂度", link:'/algorithm/time-complexity.md' }
+          {text:"时间复杂度", link:'/algorithm/time-complexity.md' },
+          {text:"栈", link:'/algorithm/stack.md' }
         ]
       },
       {
