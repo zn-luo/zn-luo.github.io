@@ -58,3 +58,15 @@ postrotate                  #转后重启服务
 endscript
 }
 ```
+
+## 容器工具
+
+[blacklabelops/logrotate](https://hub.docker.com/r/blacklabelops/logrotate)可以用来对docker容器的标准输出日志文件进行rotate
+
+```bash
+docker run -d \
+  -v /var/lib/docker/containers:/var/lib/docker/containers \
+  -v /var/log/docker:/var/log/docker \
+  -e "LOGS_DIRECTORIES=/var/lib/docker/containers /var/log/docker" \
+  blacklabelops/logrotate
+```
