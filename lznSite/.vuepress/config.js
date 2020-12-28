@@ -38,12 +38,18 @@ module.exports = {
             items:[
               {text:"常用命令", link:'/linux/commonCmds/'}
             ]
-          },
+          },      
           {
-            text:"设计模式",
+            text:"运维",
             items:[
-              {text:"工厂",link:'/designPattern/factory/'},
-              {text:"单例", link:'/designPattern/singleton/'}
+              {text:"膜拜Netfix", link:'/devops/' },
+              {text:"微服务", link:'/devops/microsoft-core.md' },
+              {text:"将工作标准化", link:'/devops/standardized-systems-and-models.md' },
+              {text:"CMDB", link:'/devops/cmdb.md' },
+              {text:"如何打造运维组织架构", link:'/devops/build-devops-structure.md' },
+              {text:"高可用架构的探索与实现", link:'/devops/ha-architecture-exploration-implementation.md' },
+              {text:"高可用组件keepalived", link:'/devops/keepalived.md' },
+              {text:"日志文件管理工具logrotate", link:'/devops/logrotate.md' }
             ]
           },
         ]
@@ -66,16 +72,10 @@ module.exports = {
         ]
       },
       {
-        text:"运维",
+        text:"设计模式",
         items:[
-          {text:"膜拜Netfix", link:'/devops/' },
-          {text:"微服务", link:'/devops/microsoft-core.md' },
-          {text:"将工作标准化", link:'/devops/standardized-systems-and-models.md' },
-          {text:"CMDB", link:'/devops/cmdb.md' },
-          {text:"如何打造运维组织架构", link:'/devops/build-devops-structure.md' },
-          {text:"高可用架构的探索与实现", link:'/devops/ha-architecture-exploration-implementation.md' },
-          {text:"高可用组件keepalived", link:'/devops/keepalived.md' },
-          {text:"日志文件管理工具logrotate", link:'/devops/logrotate.md' }
+          {text:"工厂",link:'/designPattern/factory/'},
+          {text:"单例", link:'/designPattern/singleton/'}
         ]
       },
       {
