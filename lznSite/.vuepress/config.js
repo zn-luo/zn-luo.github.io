@@ -52,6 +52,12 @@ module.exports = {
               {text:"日志文件管理工具logrotate", link:'/devops/logrotate.md' }
             ]
           },
+          {
+            text:"网络",
+            items:[
+              {text:"tcp-keepalive", link:'/network/tcp-keepalive.md'}
+            ]
+          }, 
         ]
       },
       {
