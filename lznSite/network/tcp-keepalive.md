@@ -7,7 +7,58 @@ TCP是面向连接的，两端的应用程序能正常地进行收发数据时�
 
 ## TCP keepalive工作原理
 
-当一条TCP连接经过三次握手建立通信之后，启用TCP keepalive的一端会启动一个计时器，当计时器的值减到0后，便会发出一个TCP探测包。这个探测包被封装成纯ACK包，协议规范规定保活探测包不应该包含其它数据，可以包含1个意义的字节(如0x0)，如下图2所示。探测包的Seq号与上个包是一样的，如图1所示。
+当一条TCP连接经过三次握手建立通信之后，启用TCP keepalive的一端会启动一个计时器，当计时器的值减到0后，便会发出一个TCP探测包。这个探测包被封装成ACK包，由于协议规范有规定，保活探测包没有包含其它数据，但包含1个无意义的字节(0x0)，如下图2所示，Acknowledgment被置1，Data为00。探测包的Seq号与上个包是一样的，如图1所示。
 
 探测包图2  
 ![tcp keepalive探测包](/imgs/network/tcp-keepalive-2.png)
+
+## linux系统的三个重要参数
+
+tcp keepalive默认是关闭的，要启用tcp keepalive，需要设置SO_KEEPALIVE套接字选项。
+
+1. tcp_keepalive_time 设置每XX秒发送一次探测包，即最后一次数据传输结束到第一个保活探测包发送的时间间隔，即上面提到的计时器的值，linux系统默认值是7200s。
+2. tcp_keepalive_intvl 当经过tcp_keepalive_time空间时间而发送探测包后，没有收到对方的确认，则以tcp_keepalive_intvl为空闲时间间隔发送探测包，linux系统默认值是75s
+3. tcp_keepalive_probes 设置保活探测包发送的次数，linux系统默认值为9次
+
+## python Demo
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import time
+import socket
+
+class tcpKeepalive(object):
+    def __init__(self,**kwargs):
+      self.sck = socket.socket(**kwargs)
+      self.enable_keepalive()
+
+    def enable_keepalive(self):
+      """启用keepalive"""
+      self.sck.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+
+    def set_keepalive_time(self, t=15):
+      """设置每隔t秒发送一次探测报文"""
+      self.sck.setsockopt(socket.SOL_TCP, socket.TCP_KEEPIDLE, t)
+
+    def set_intvl(self, intvl=1):
+      """设置当没有收到探测回应时，每隔intvl秒发送一次探测报文"""
+      self.sck.setsockopt(socket.SOL_TCP, socket.TCP_KEEPINTVL, intvl)
+
+    def set_probes(self,probes=6):
+      """设置重发探测报文数量达到probes时，还未得到ACK反馈，则停止"""
+      self.sck.setsockopt(socket.SOL_TCP, socket.TCP_KEEPCNT, probes)
+
+    def set_socket_default(self):
+      self.set_keepalive_time()
+      self.set_intvl()
+      self.set_probes()
+
+    def connect(self, host='test.tcl-move.com', port=9991):
+      self.set_socket_default()
+      self.sck.connect((host, port)) 
+      time.sleep(150)
+
+if __name__ == "__main__":
+    tcpKeepalive().connect()
+```
