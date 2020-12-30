@@ -10,4 +10,5 @@
 
 ## 服务端
 
-1. kubesphere <https://v2-1.docs.kubesphere.io/docs/zh-CN/quick-start/quick-start-guide/>
+1. kubernetes <https://kubernetes.io/docs/concepts/>
+2. kubesphere <https://v2-1.docs.kubesphere.io/docs/zh-CN/quick-start/quick-start-guide/>
