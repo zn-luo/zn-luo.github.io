@@ -11,5 +11,5 @@
 ## 服务端
 
 1. kubernetes <https://kubernetes.io/docs/concepts/>
-2. kubesphere <https://v2-1.docs.kubesphere.io/docs/zh-CN/quick-start/quick-start-guide/>
-3. kubekey <https://github.com/kubesphere/kubekey/tree/release-1.0>
+2. kubesphere <https://v3-0.docs.kubesphere.io/docs/>
+3. kubekey <https://github.com/kubesphere/kubekey>
