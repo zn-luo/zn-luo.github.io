@@ -8,9 +8,11 @@ tags:
 ---
 
 
-利用docker swarm多节点自动部署mongoDB切片集群
-
 ## MongoDB切片集群高可用架构图
 
 <https://www.processon.com/view/5cc56d70e4b059e20a0c038b>
 ![切片架构图](imgs/shard.jpg "切片架构图")
+
+## docker-compose部署切片集群demo
+
+<https://github.com/luo-zn/mongo.git>
