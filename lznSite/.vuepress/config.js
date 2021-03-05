@@ -67,6 +67,7 @@ module.exports = {
             text:"mongodb",
             items:[
               {text:"切片集群部署", link:'/dbs/mongodb/'},
+              {text:"分片集群的设计", link:'/dbs/mongodb/shard-design.md'},
             ]
           },
           {
