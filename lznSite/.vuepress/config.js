@@ -68,6 +68,7 @@ module.exports = {
             items:[
               {text:"切片集群部署", link:'/dbs/mongodb/'},
               {text:"聚合", link:'/dbs/mongodb/aggregation.md'},
+              {text:"模型设计基础", link:'/dbs/mongodb/basics-model-design.md'},
               {text:"分片集群的设计", link:'/dbs/mongodb/shard-design.md'},
             ]
           },
