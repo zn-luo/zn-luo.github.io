@@ -1,6 +1,9 @@
 # -*-coding:UTF-8 -*-
 #!/bin/env/python
 
+import unittest
+from inspect import isgenerator
+
 class Node(object):
     def __init__(self,val):
         self.val = val
@@ -13,7 +16,14 @@ class SingleLinkList(object):
     def is_empty(self):
         return self.head is None 
 
-    def insert(self, node):
+    def items(self):
+        cur = self.head
+        while not cur.next is None:
+            yield cur.next   #返回生成器
+            cur = cur.next   #游标后移
+
+    def insert(self, index, node):
+        """指定位置插入元素"""
         pass
 
     def append(self, node):
@@ -36,3 +46,15 @@ class SingleLinkList(object):
 
     def find(self, node):
         pass
+
+
+class TestSingleLinkedList(unittest.TestCase):
+    def test_is_empty(self):
+        self.assertTrue(SingleLinkList().is_empty())
+
+    def test_items(self):
+        singleLink = SingleLinkList()        
+        self.assertTrue(isgenerator(singleLink.items()))
+
+if __name__ == "__main__":
+    unittest.main()
