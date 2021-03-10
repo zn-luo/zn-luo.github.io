@@ -21,7 +21,7 @@
 ### 单链表
 
 #### 单链表的结构定义
-1. python实现[单链表](/imgs/pys/algorithm/single-linked-list.py)
+1. python实现单链表结构如下所示，具体细节查看[single-linked-list.py](/imgs/pys/algorithm/single-linked-list.py)
     ```python
     class Node(object):
         """单链表结点结构"""
