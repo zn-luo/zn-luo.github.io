@@ -68,6 +68,7 @@ module.exports = {
             items:[
               {text:"切片集群部署", link:'/dbs/mongodb/'},
               {text:"聚合", link:'/dbs/mongodb/aggregation.md'},
+              {text:"模型设计基础", link:'/dbs/mongodb/basics-model-design.md'},
               {text:"分片集群的设计", link:'/dbs/mongodb/shard-design.md'},
             ]
           },
@@ -90,6 +91,7 @@ module.exports = {
         text:"算法",
         items:[
           {text:"数据结构与算法", link:'/algorithm/data-structure.md' },
+          {text:"数组和链表", link:'/algorithm/array-linked-list.md' },
           {text:"时间复杂度", link:'/algorithm/time-complexity.md' },
           {text:"栈", link:'/algorithm/stack.md' },
           {text:"算法实现例子", link:'/algorithm/example.md' }
