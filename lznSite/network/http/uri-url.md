@@ -22,3 +22,4 @@ URI：RFC1630(1994.6)、RFC3986(2005.1,取代RFC2396和RFC2732)，Uniform Resour
 ## URI的组成
 
 组成结构： schema, user information, host, port, path, query, fragment
+![web-uri](/imgs/network/http/web-uri.jpg)
