@@ -21,5 +21,14 @@ URI：RFC1630(1994.6)、RFC3986(2005.1,取代RFC2396和RFC2732)，Uniform Resour
 
 ## URI的组成
 
-组成结构： schema, user information, host, port, path, query, fragment
+组成结构： schema, user information, host, port, path, query, fragment  
 ![web-uri](/imgs/network/http/web-uri.jpg)
+
+合法URI例子:
+* ftp://ftp.exmaple.com/rfc/rfc1994.txt
+* https://www.ietf.org/rfc/rfc2396.txt
+* Idap://[2002:db9::7]/c=GB?objectClass?one
+* mailto:lzn@example.com
+* news:comp.infosystems.www.servers.unix tel:+1-86-4444-1243
+* telnet://192.168.2.1:80/
+* urn:oasis:names:specification:docs:dtd:xml:4.1.2
