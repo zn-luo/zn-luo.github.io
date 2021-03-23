@@ -1,0 +1,95 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-redis-data-0
+spec:
+  capacity:
+    storage: 200M      #磁盘大小200M
+  accessModes:
+    - ReadWriteMany    #多客户可读写
+  nfs:
+    server: 10.129.76.132
+    path: "/usr/local/kubernetes/redis/pv0"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-redis-data-1
+spec:
+  capacity:
+    storage: 200M      #磁盘大小200M
+  accessModes:
+    - ReadWriteMany    #多客户可读写
+  nfs:
+    server: 10.129.76.132
+    path: "/usr/local/kubernetes/redis/pv1"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-redis-data-2
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 10.129.76.132
+    path: "/usr/local/kubernetes/redis/pv2"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-redis-data-3
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 10.129.76.132
+    path: "/usr/local/kubernetes/redis/pv3"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-redis-data-4
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 10.129.76.132
+    path: "/usr/local/kubernetes/redis/pv4"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-redis-data-5
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 10.129.76.132
+    path: "/usr/local/kubernetes/redis/pv5"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-redis-data-6
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 10.129.76.132
+    path: "/usr/local/kubernetes/redis/pv6"
