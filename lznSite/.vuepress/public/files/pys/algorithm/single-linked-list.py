@@ -29,9 +29,10 @@ class SingleLinkList(object):
 
     def length(self):
         """链表长度"""
-        count = 0 
-        for _a in self.items():
-            count += 1
+        cur,count = self.head, 0
+        while not cur is None:
+            count +=1 
+            cur = cur.next   #游标后移
         return count
 
     def append(self, node):
@@ -122,8 +123,11 @@ class TestSingleLinkedList(unittest.TestCase):
     def test_insert(self):
         sl = self._get_single_link()
         sl.insert(2,Node(5))
-        for a in sl.items():
-            print a.val
+        index = 0 
+        for a in sl.items():            
+            if index == 2:
+                self.assertEqual(a.val, 5)
+            index += 1
 
     def test_remove(self):
         sl = self._get_single_link()
@@ -137,3 +141,9 @@ class TestSingleLinkedList(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+    # suite = unittest.TestSuite()
+    # tests = [TestSingleLinkedList("test_length")]
+    # suite.addTests(tests)
+    # runner = unittest.TextTestRunner(verbosity=2)
+    # runner.run(suite)

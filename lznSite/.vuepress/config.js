@@ -26,7 +26,16 @@ module.exports = {
       {
         text:"前端",
         items:[
-          {text:"Vue",link:'/frontEnd/'}
+          {
+            text:"vue",
+            items:[
+              {text:"事件", link:'/vue/vue-event.md' },
+              {text:"属性", link:'/vue/vue-property.md' },
+              {text:"插槽", link:'/vue/vue-slot.md' },
+              {text:"双向绑定和单向数据流", link:'/vue/bind-flow.md' }
+            ]
+          },
+          
           // {text:"angular", link:'/frontEnd/angular/'}
         ]
       },
@@ -55,6 +64,12 @@ module.exports = {
           {
             text:"网络",
             items:[
+              {
+                text:"http",
+                items:[
+                  {text:"URI与URL", link:'/network/http/uri-url.md'},
+                ]
+              },
               {text:"tcp-keepalive", link:'/network/tcp-keepalive.md'}
             ]
           }, 
