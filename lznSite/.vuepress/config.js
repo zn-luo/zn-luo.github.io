@@ -64,7 +64,7 @@ module.exports = {
             text:"网络",
             items:[
               {
-                text:"http",
+                text:"http协议",
                 items:[
                   {text:"URI与URL", link:'/network/http-net/uri-url.md'}
                 ]
