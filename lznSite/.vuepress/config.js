@@ -1,3 +1,38 @@
+
+Skip to content
+Pull requests
+Issues
+Marketplace
+Explore
+@zn-luo
+Learn Git and GitHub without any code!
+
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+zn-luo /
+zn-luo.github.io
+
+1
+0
+
+    0
+
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+
+    Settings
+
+zn-luo.github.io/lznSite/.vuepress/config.js /
+Zhennan.luo fix lznSite/.vuepress/config.js
+Latest commit 82c722f 21 days ago
+History
+1 contributor
+118 lines (117 sloc) 3.56 KB
 const path=require("path");
 
 module.exports = {
@@ -26,15 +61,8 @@ module.exports = {
       {
         text:"前端",
         items:[
-          {
-            text:"vue",
-            items:[
-              {text:"事件", link:'/frontEnd/vue/vue-event.md' },
-              {text:"属性", link:'/frontEnd/vue/vue-property.md' },
-              {text:"插槽", link:'/frontEnd/vue/vue-slot.md' },
-              {text:"双向绑定和单向数据流", link:'/frontEnd/vue/bind-flow.md' }
-            ]
-          }
+          {text:"Vue",link:'/frontEnd/'}
+          // {text:"angular", link:'/frontEnd/angular/'}
         ]
       },
       {
@@ -62,12 +90,6 @@ module.exports = {
           {
             text:"网络",
             items:[
-              {
-                text:"http",
-                items:[
-                  {text:"URI与URL", link:'/network/http/uri-url.md'},
-                ]
-              },
               {text:"tcp-keepalive", link:'/network/tcp-keepalive.md'}
             ]
           }, 
@@ -82,7 +104,7 @@ module.exports = {
               {text:"切片集群部署", link:'/dbs/mongodb/'},
               {text:"聚合", link:'/dbs/mongodb/aggregation.md'},
               {text:"模型设计基础", link:'/dbs/mongodb/basics-model-design.md'},
-              {text:"分片集群的设计", link:'/dbs/mongodb/shard-design.md'}
+              {text:"分片集群的设计", link:'/dbs/mongodb/shard-design.md'},
             ]
           },
           {
@@ -104,7 +126,6 @@ module.exports = {
         text:"算法",
         items:[
           {text:"数据结构与算法", link:'/algorithm/data-structure.md' },
-          {text:"数组和链表", link:'/algorithm/array-linked-list.md' },
           {text:"时间复杂度", link:'/algorithm/time-complexity.md' },
           {text:"栈", link:'/algorithm/stack.md' },
           {text:"算法实现例子", link:'/algorithm/example.md' }
@@ -130,3 +151,18 @@ module.exports = {
     ]
   }
 }
+
+    © 2021 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
