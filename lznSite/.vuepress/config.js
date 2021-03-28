@@ -63,12 +63,6 @@ module.exports = {
           {
             text:"网络",
             items:[
-              {
-                text:"http协议",
-                items:[
-                  {text:"URI与URL", link:'/network/http-net/uri-url.md'}
-                ]
-              },
               {text:"tcp-keepalive", link:'/network/tcp-keepalive.md'}
             ]
           }, 
