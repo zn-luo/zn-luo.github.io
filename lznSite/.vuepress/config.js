@@ -29,14 +29,12 @@ module.exports = {
           {
             text:"vue",
             items:[
-              {text:"事件", link:'/vue/vue-event.md' },
-              {text:"属性", link:'/vue/vue-property.md' },
-              {text:"插槽", link:'/vue/vue-slot.md' },
-              {text:"双向绑定和单向数据流", link:'/vue/bind-flow.md' }
+              {text:"事件", link:'/frontEnd/vue/vue-event.md' },
+              {text:"属性", link:'/frontEnd/vue/vue-property.md' },
+              {text:"插槽", link:'/frontEnd/vue/vue-slot.md' },
+              {text:"双向绑定和单向数据流", link:'/frontEnd/vue/bind-flow.md' }
             ]
           }
-          
-          // {text:"angular", link:'/frontEnd/angular/'}
         ]
       },
       {
