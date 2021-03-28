@@ -34,7 +34,7 @@ module.exports = {
               {text:"插槽", link:'/vue/vue-slot.md' },
               {text:"双向绑定和单向数据流", link:'/vue/bind-flow.md' }
             ]
-          },
+          }
           
           // {text:"angular", link:'/frontEnd/angular/'}
         ]
