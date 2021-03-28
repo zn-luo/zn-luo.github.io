@@ -26,7 +26,15 @@ module.exports = {
       {
         text:"前端",
         items:[
-          {text:"Vue",link:'/frontEnd/'}
+          {
+            text:"vue",
+            items:[
+              {text:"事件", link:'/frontEnd/vue/vue-event.md' },
+              {text:"属性", link:'/frontEnd/vue/vue-property.md' },
+              {text:"插槽", link:'/frontEnd/vue/vue-slot.md' },
+              {text:"双向绑定和单向数据流", link:'/frontEnd/vue/bind-flow.md' }
+            ]
+          }
           // {text:"angular", link:'/frontEnd/angular/'}
         ]
       },
