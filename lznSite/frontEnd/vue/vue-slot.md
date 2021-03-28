@@ -1,4 +1,4 @@
-# vue组件的核心组成之一[插槽]](https://cn.vuejs.org/v2/guide/components-slots.html)
+# vue组件的核心组成之一[插槽](https://cn.vuejs.org/v2/guide/components-slots.html)
 
 ## 属性主要有两大类
 
