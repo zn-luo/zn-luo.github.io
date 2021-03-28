@@ -66,7 +66,7 @@ module.exports = {
               {
                 text:"http",
                 items:[
-                  {text:"URI与URL", link:'/network/http/uri-url.md'}
+                  {text:"URI与URL", link:'/network/http-net/uri-url.md'}
                 ]
               },
               {text:"tcp-keepalive", link:'/network/tcp-keepalive.md'}
