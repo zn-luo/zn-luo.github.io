@@ -1,38 +1,3 @@
-
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@zn-luo
-Learn Git and GitHub without any code!
-
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-zn-luo /
-zn-luo.github.io
-
-1
-0
-
-    0
-
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-
-    Settings
-
-zn-luo.github.io/lznSite/.vuepress/config.js /
-Zhennan.luo fix lznSite/.vuepress/config.js
-Latest commit 82c722f 21 days ago
-History
-1 contributor
-118 lines (117 sloc) 3.56 KB
 const path=require("path");
 
 module.exports = {
