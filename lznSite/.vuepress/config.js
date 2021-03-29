@@ -29,13 +29,12 @@ module.exports = {
           {
             text:"vue",
             items:[
-              {text:"事件", link:'/vue/vue-event.md' },
-              {text:"属性", link:'/vue/vue-property.md' },
-              {text:"插槽", link:'/vue/vue-slot.md' },
-              {text:"双向绑定和单向数据流", link:'/vue/bind-flow.md' }
+              {text:"事件", link:'/frontEnd/vue/vue-event.md' },
+              {text:"属性", link:'/frontEnd/vue/vue-property.md' },
+              {text:"插槽", link:'/frontEnd/vue/vue-slot.md' },
+              {text:"双向绑定和单向数据流", link:'/frontEnd/vue/bind-flow.md' }
             ]
-          },
-          
+          }
           // {text:"angular", link:'/frontEnd/angular/'}
         ]
       },
@@ -64,12 +63,6 @@ module.exports = {
           {
             text:"网络",
             items:[
-              {
-                text:"http",
-                items:[
-                  {text:"URI与URL", link:'/network/http/uri-url.md'},
-                ]
-              },
               {text:"tcp-keepalive", link:'/network/tcp-keepalive.md'}
             ]
           }, 
@@ -106,7 +99,6 @@ module.exports = {
         text:"算法",
         items:[
           {text:"数据结构与算法", link:'/algorithm/data-structure.md' },
-          {text:"数组和链表", link:'/algorithm/array-linked-list.md' },
           {text:"时间复杂度", link:'/algorithm/time-complexity.md' },
           {text:"栈", link:'/algorithm/stack.md' },
           {text:"算法实现例子", link:'/algorithm/example.md' }
