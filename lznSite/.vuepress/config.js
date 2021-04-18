@@ -68,7 +68,8 @@ module.exports = {
           {
             text:"http",
             items:[
-              {text:"URI与URL", link:'/network/http-net/uri-url.md'}
+              {text:"URI与URL", link:'/network/http-net/uri-url.md'},
+              {text:"Web架构的七大关键属性", link:'/network/http-net/web-7-key-properties.md'}
             ]
           },  
           {
