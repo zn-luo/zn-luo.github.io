@@ -39,7 +39,7 @@ module.exports = {
         ]
       },
       {
-        text:"Server",
+        text:"服务端",
         items:[
           {
             text:"linux",
@@ -59,13 +59,7 @@ module.exports = {
               {text:"高可用组件keepalived", link:'/devops/keepalived.md' },
               {text:"日志文件管理工具logrotate", link:'/devops/logrotate.md' }
             ]
-          },
-          {
-            text:"网络",
-            items:[
-              {text:"tcp-keepalive", link:'/network/tcp-keepalive.md'}
-            ]
-          }, 
+          }
         ]
       },
       {
