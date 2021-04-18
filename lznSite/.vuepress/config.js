@@ -69,6 +69,23 @@ module.exports = {
         ]
       },
       {
+        text:"网络",
+        items:[
+          {
+            text:"http",
+            items:[
+              {text:"URI与URL", link:'/network/http-net/uri-url.md'}
+            ]
+          },  
+          {
+            text:"tcp",
+            items:[
+              {text:"tcp-keepalive", link:'/network/tcp-keepalive.md'}
+            ]
+          }, 
+        ]
+      },
+      {
         text:"数据库",
         items:[
           {
