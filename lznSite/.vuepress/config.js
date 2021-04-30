@@ -90,12 +90,14 @@ module.exports = {
               {text:"聚合", link:'/dbs/mongodb/aggregation.md'},
               {text:"模型设计基础", link:'/dbs/mongodb/basics-model-design.md'},
               {text:"分片集群的设计", link:'/dbs/mongodb/shard-design.md'},
+              {text:"常用命令", link:'/dbs/mongodb/command.md'}
             ]
           },
           {
             text:"redis",
             items:[
-              {text:"redis持久化磁盘负载", link:'/dbs/redis/redis-disk-load'}
+              {text:"redis持久化磁盘负载", link:'/dbs/redis/redis-disk-load'},
+              {text:"redis字条串类型", link:'/dbs/redis/string.md'}
             ]
           },
         ]

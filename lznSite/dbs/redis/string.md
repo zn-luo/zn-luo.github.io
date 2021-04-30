@@ -58,3 +58,13 @@ OK
 redis> STRLEN key
 (integer) 11
 ```
+
+## APPEND key value
+
+把 value 追加到键 key 现有值的末尾。如果 key 不存在， APPEND 就简单地将键 key 的值设为 value ， 就像执行 SET key value 一样。  
+时间复杂度： 平摊O(1)  
+
+示例
+
+```bash
+```

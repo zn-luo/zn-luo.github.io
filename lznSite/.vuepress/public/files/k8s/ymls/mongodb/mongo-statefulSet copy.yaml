@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: tct-dev
+  name: mongo-configdb
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+      role: configdb # has to match .spec.template.metadata.labels
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mongodb
+        role: configdb
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mongo-config
+        image: mongo
+        command:
+          - "mongod"
+          - "--config"
+          - "/data/configdb/mongodb.conf"
+        volumeMounts:
+          - name: volume-naxps5
+            readOnly: true
+            mountPath: /data/configdb
+      - name: mongo-sidecar
+        image: cvallance/mongo-k8s-sidecar
+        env:
+          - name: MONGO_SIDECAR_POD_LABELS
+            value: "role=configdb,app=mongodb"
+      volumes:
+        - name: volume-naxps5
+          configMap:
+            name: mongodb
+            items:
+              - key: mongo-config.conf
+                path: mongodb.conf
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: tct-dev
+  labels:
+    app: mongo-configdb
+  name: mongo-configdb-srv
+  annotations:
+    kubesphere.io/alias-name: mongo-configdb
+    kubesphere.io/serviceType: statefulservice
+spec:
+  sessionAffinity: None
+  selector:
+    app: mongo-configdb
+  ports:
+    - name: tcp-27017
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
+clusterIP: None
