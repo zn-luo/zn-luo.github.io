@@ -70,6 +70,7 @@ module.exports = {
             items:[
               {text:"URI与URL", link:'/network/http-net/uri-url.md'},
               {text:"Web架构的七大关键属性", link:'/network/http-net/web-7-key-properties.md'}
+              {text:"URI编码", link:'/network/http-net/uri-encoding.md'}
               {text:"Chrome浏览器开发者工具", link:'/network/http-net/chrome-devtools.md'}
             ]
           },  
