@@ -72,6 +72,7 @@ module.exports = {
               {text:"Web架构的七大关键属性", link:'/network/http-net/web-7-key-properties.md'},
               {text:"URI编码", link:'/network/http-net/uri-encoding.md'},
               {text:"请求行", link:'/network/http-net/request-line.md'},
+              {text:"HTTP响应状态码", link:'/network/http-net/response-code.md'},
               {text:"Chrome浏览器开发者工具", link:'/network/http-net/chrome-devtools.md'}
             ]
           },  
