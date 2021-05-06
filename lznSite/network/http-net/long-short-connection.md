@@ -1,4 +1,4 @@
-# 长短连接
+# 长短连接的管理
 
 ## HTTP连接的常见流程
 
@@ -13,3 +13,14 @@
 ## 从TCP编程上看HTTP请求处理
 
 ![tcp连接图](/imgs/network/http/tcp连接.jpg)
+
+## 短连接与长连接的区别
+
+短连接与长连接的区别由Connection头部实现
+
+* 长连接
+    * 客户端请求长连接设置请求头： Connection:Keep-Alive
+    * 服务器响应支持连接设置响应头： Connection:Keep-Alive
+    * HTTP/1.1默认支持长连接，设置Connection:Keep-Alive无意义
+* 明确不支持长连接
+    * 设置头部， Connection:Close
