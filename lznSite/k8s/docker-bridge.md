@@ -18,3 +18,27 @@ Docker项目默认会在宿主机上创建一个名叫docker0的网桥。连接�
 ## Veth Pair设备
 
 Veth Pair起到连接容器和网桥的作用。它被创建出来后，总是以两张虚拟网卡(Veth Peer)的形式成对出现的。从其中一个网卡发出的数据包，可以直接出现在与它对应的另一张网卡上，哪怕这两个网卡在不同的Network Namespace里。
+
+## Veth Pair工作原理
+
+![veth-pair](/imgs/k8s/Veth-Pair.PNG)
+
+备注：  
+container1路由规则,如下所示
+
+```bash
+$ route
+Kernel IP routing table 
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface default         172.17.0.1      0.0.0.0         UG    0      0        0 eth0 172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 eth0
+```
+
+* 如图在container1里访问container2(172.17.0.3)的时候，访问172.17.0.3这个目的IP地址的数据包，在172.17.0.0/16这个范围内,所以会被匹配到第二条路由规则，它的网关是0.0.0.0,意味着它是一条直连规则，所以IP包经过eth0网卡，通过二层网络直接发往目的地。
+
+* 而二层网络的正常工作需要MAC地址，知道了目的IP地址为172.17.0.3，需要eth0网卡发送一个ARP广播数据包，通过IP地址来查找对应的MAC地址。
+
+* 容器里的eth0网卡是Veth Pair的其中一端，它在容器的Network Namespace里，而另一端在宿主机的网络空间里(Host Namespace),并且插在宿主机的docker0网桥上。一旦虚拟网卡被插在网桥上，就会变成该网桥的从设备。从设备会被剥夺调用网络协议栈处理数据包的资格，从而降级为网桥上的一个端口。这个端口就只接收流入的数据包，而对数据包的处理(如转发或丢弃)能力则全部交给网桥。  
+所以docker0网桥在收到ARP广播的数据包后会转发到其它被插在此网桥上的虚拟网卡上。所以连接到docker0网桥的container2容器的网络协议栈会收到这个ARP数据包，然后将172.17.0.3对应网卡的Mac地址回复给container1。
+
+* container1收到回复的ARP数据包后，得到了目的MAC地址，便能把访问数据包发出去。
+
+* 访问数据包从container1的eth0被发出去后，流向docker0端口(如图veth9c02e56)，被docker0转向另一个端口(如图vethb496313),最后流进container2的eth0。
