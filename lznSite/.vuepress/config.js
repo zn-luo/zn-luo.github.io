@@ -107,12 +107,13 @@ module.exports = {
         ]
       },
       {
-        text:"架构设计",
+        text:"架构与设计",
         items:[
           {
             text:"微服务",
             items:[
-              {text:"什么是微服务", link:'/architecture/microservice.md'}
+              {text:"什么是微服务", link:'/architecture/microservice.md'},
+              {text:"微服务利弊", link:'/architecture/microservice-advantages-disavantages.md.md'}
             ]
           }, 
           {
