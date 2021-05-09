@@ -107,10 +107,21 @@ module.exports = {
         ]
       },
       {
-        text:"设计模式",
+        text:"架构设计",
         items:[
-          {text:"工厂",link:'/designPattern/factory/'},
-          {text:"单例", link:'/designPattern/singleton/'}
+          {
+            text:"微服务",
+            items:[
+              {text:"tcp-keepalive", link:'/network/tcp-keepalive.md'}
+            ]
+          }, 
+          {
+            text:"设计模式",
+            items:[
+              {text:"工厂",link:'/designPattern/factory/'},
+              {text:"单例", link:'/designPattern/singleton/'}
+            ]
+          } 
         ]
       },
       {
