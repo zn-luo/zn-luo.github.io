@@ -117,7 +117,7 @@ module.exports = {
             text:"微服务",
             items:[
               {text:"什么是微服务", link:'/architecture/microservice.md'},
-              {text:"微服务利弊", link:'/architecture/microservice-advantages-disavantages.md.md'}
+              {text:"微服务利弊", link:'/architecture/microservice-advantages-disavantages.md'}
             ]
           }, 
           {
