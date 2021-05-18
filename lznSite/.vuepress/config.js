@@ -44,7 +44,8 @@ module.exports = {
           {
             text:"linux",
             items:[
-              {text:"常用命令", link:'/linux/commonCmds/'}
+              {text:"常用命令", link:'/linux/commonCmds/'},
+              {text:"缓解DDoS攻击的方法", link:'/linux/performance/resist-ddos.md'}
             ]
           },      
           {
@@ -79,7 +80,9 @@ module.exports = {
           {
             text:"tcp",
             items:[
-              {text:"tcp-keepalive", link:'/network/tcp-keepalive.md'}
+              {text:"tcp-keepalive", link:'/network/tcp-net/tcp-keepalive.md'},
+              {text:"TCP三次握手", link:'/network/tcp-net/tcp-three-way-handshake.md'},
+              {text:"tcp握手的性能优化与安全", link:'/network/tcp-net/tcp-three-way-handshake.md'}
             ]
           }, 
         ]
@@ -94,6 +97,7 @@ module.exports = {
               {text:"聚合", link:'/dbs/mongodb/aggregation.md'},
               {text:"模型设计基础", link:'/dbs/mongodb/basics-model-design.md'},
               {text:"分片集群的设计", link:'/dbs/mongodb/shard-design.md'},
+              {text:"备份与恢复", link:'/dbs/mongodb/back-recovery.md'},
               {text:"常用命令", link:'/dbs/mongodb/command.md'}
             ]
           },
@@ -113,7 +117,7 @@ module.exports = {
             text:"微服务",
             items:[
               {text:"什么是微服务", link:'/architecture/microservice.md'},
-              {text:"微服务利弊", link:'/architecture/microservice-advantages-disavantages.md.md'}
+              {text:"微服务利弊", link:'/architecture/microservice-advantages-disavantages.md'}
             ]
           }, 
           {

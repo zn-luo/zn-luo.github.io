@@ -10,10 +10,13 @@ netstat 命令用于显示各种网络相关信息，如网络连接，路由表
 * -u 或 -udp             仅显示udp相关选项
 * -n 或 -numeric         拒绝显示别名，能显示数字的全部转化为数字
 * -l 或 -listening       仅列出在Listen(监听)的服务状态
-* -p 或 -programs        显示建立相关链接的程序名
-* -s 或 -statistice      显示网络统计数据
+* -p 或 -programs        显示对应的可执行程序名字(linux)
+* -s 或 -statistice      显示每个协议的统计数据
 * -M 或 –masquerade      显示伪装的网络连线
 * -h 或 –help            帮助
+* -r                     显示路由表
+* -o(windows)            显示拥有的与每个连接关联的进程ID
+* -b(windows)            显示对应的可执行程序名字
 
 ## 查询TCP连接数
 
