@@ -82,6 +82,7 @@ module.exports = {
             items:[
               {text:"tcp-keepalive", link:'/network/tcp-net/tcp-keepalive.md'},
               {text:"TCP三次握手", link:'/network/tcp-net/tcp-three-way-handshake.md'},
+              {text:"数据传输与MSS分段", link:'/network/tcp-net/data-transmission-mss.md'},
               {text:"tcp握手的性能优化与安全", link:'/network/tcp-net/tcp-performance-security.md'}
             ]
           }, 
