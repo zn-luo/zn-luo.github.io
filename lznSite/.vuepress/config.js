@@ -124,6 +124,7 @@ module.exports = {
           {
             text:"设计模式",
             items:[
+              {text:"5大要素",link:'/designPattern/5-elements.md'},
               {text:"工厂",link:'/designPattern/factory/'},
               {text:"单例", link:'/designPattern/singleton/'}
             ]
