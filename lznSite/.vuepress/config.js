@@ -51,6 +51,7 @@ module.exports = {
             text:"linux",
             items:[
               {text:"常用命令", link:'/linux/commonCmds/'},
+              {text:"Buffer/Cache", link:'/linux/buffer-cache.md'},
               {text:"缓解DDoS攻击的方法", link:'/linux/performance/resist-ddos.md'}
             ]
           },      
