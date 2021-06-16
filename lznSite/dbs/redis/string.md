@@ -67,4 +67,12 @@ redis> STRLEN key
 示例
 
 ```bash
+APPEND phone "iphone"          # 对不存在的 key(phone) 进行 APPEND ，等同于 SET phone "iphone"
+(integer) 6                    # 返回字符长度
+
+# 对已存在的字符串进行 APPEND
+redis> APPEND phone "11"     # 长度从 6 个字符增加到 8 个字符
+(integer) 8
+redis> GET phone
+"iphone11"
 ```
