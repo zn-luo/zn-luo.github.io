@@ -162,7 +162,13 @@ module.exports = {
       {
         text:"箴言",
         items:[
-          {text:"职场箴言", link:'/motto/job-motto.md' }
+          {text:"职场箴言", link:'/motto/job-motto.md' },
+          {
+            text: "典故箴言",
+            items: [
+              {text:"事前控制", link:'/dbs/allusion/feedforward-control.md'}
+            ]
+          }
         ]
       },
       {text:"外部链接", link:"/external-link.md"}
