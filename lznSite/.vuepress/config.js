@@ -166,7 +166,7 @@ module.exports = {
           {
             text: "典故箴言",
             items: [
-              {text:"事前控制", link:'/dbs/allusion/feedforward-control.md'}
+              {text:"事前控制", link:'/motto/allusion/feedforward-control.md'}
             ]
           }
         ]
