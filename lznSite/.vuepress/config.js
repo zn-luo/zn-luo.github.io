@@ -51,6 +51,7 @@ module.exports = {
             text:"linux",
             items:[
               {text:"常用命令", link:'/linux/commonCmds/'},
+              {text:"Buffer/Cache", link:'/linux/buffer-cache.md'},
               {text:"缓解DDoS攻击的方法", link:'/linux/performance/resist-ddos.md'}
             ]
           },      
@@ -100,7 +101,7 @@ module.exports = {
           {
             text:"mongodb",
             items:[
-              {text:"切片集群部署", link:'/dbs/mongodb/'},
+              {text:"切片集群架构", link:'/dbs/mongodb/'},
               {text:"聚合", link:'/dbs/mongodb/aggregation.md'},
               {text:"模型设计基础", link:'/dbs/mongodb/basics-model-design.md'},
               {text:"分片集群的设计", link:'/dbs/mongodb/shard-design.md'},

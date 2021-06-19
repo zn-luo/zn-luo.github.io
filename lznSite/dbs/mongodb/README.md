@@ -11,7 +11,7 @@ tags:
 ## MongoDB切片集群高可用架构图
 
 <https://www.processon.com/view/5cc56d70e4b059e20a0c038b>
-![切片架构图](imgs/shard.jpg "切片架构图")
+![切片架构图](/imgs/dbs/shard.jpg "切片架构图")
 
 ## docker-compose部署切片集群demo
 
