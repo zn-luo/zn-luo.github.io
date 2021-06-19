@@ -38,8 +38,7 @@ module.exports = {
           {
             text:"其它",
             items:[
-              {text:"关闭浏览器的HSTS功能", link:'/frontEnd/close-browser-hsts.md' },
-              {text:"双向绑定和单向数据流", link:'/frontEnd/vue/bind-flow.md' }
+              {text:"关闭浏览器的HSTS功能", link:'/frontEnd/close-browser-hsts.md' }
             ]
           }
         ]
