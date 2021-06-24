@@ -12,9 +12,9 @@ redis虽为内存数据库，但为了做到服务down机重启后不丢失数�
 ## 监控截图
 
 1. openfalcon磁盘监控  
-![openfalcon磁盘监控](/imgs/dbs/disk-io.png)
+![openfalcon磁盘监控](/imgs/dbs/redis/disk-io.png)
 2. atop磁盘监控  
-![atop磁盘监控](/imgs/dbs/atop-disk.png)
+![atop磁盘监控](/imgs/dbs/redis/atop-disk.png)
 
 ## redis持久化流程
 

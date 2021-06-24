@@ -7,7 +7,7 @@ class RedisDelLarge(object):
       super().__init__()
       self.red = redis.StrictRedis(*args, **kwarg)
 
-  def del_large_hash(self, large_key, cursor = 0,match=None,count=1000):
+  def del_large_hash(self, large_key, cursor = None,match=None,count=1000):
       """ Delete Large Hash Key
       Args:
           large_key (string): large hash key
@@ -15,12 +15,12 @@ class RedisDelLarge(object):
           match (text, optional): allows for filtering the keys by pattern. Defaults to None.
           count (int, optional): allows for hint the minimum number of returns. Defaults to 1000.
       """          
-      while cursor != 0:
-        cursor, data = self.red.hscan(large_key,cursor,match, count)
+      while cursor != 0:       
+        cursor, data = self.red.hscan(large_key,cursor if cursor else 0,match, count)
         for item in data.items():
           self.red.hdel(large_key, item[0])
 
-  def del_large_set(self, large_key, cursor=0,match=None,count=1000):
+  def del_large_set(self, large_key, cursor=None,match=None,count=1000):
       """ Delete Large Set Key
       Args:
           large_key (string): large set key
@@ -29,7 +29,7 @@ class RedisDelLarge(object):
           count (int, optional): allows for hint the minimum number of returns. Defaults to 1000.
       """
       while cursor != 0:
-        cursor, data = self.red.sscan(large_key, cursor,match, count)
+        cursor, data = self.red.sscan(large_key, cursor if cursor else 0,match, count)
         for item in data:
           self.red.srem(large_key, item)
 
