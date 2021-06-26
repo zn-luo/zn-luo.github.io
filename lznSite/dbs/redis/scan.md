@@ -15,7 +15,7 @@ ZSCAN: 迭代Sorted Set类型的元素及其相关的分数。
 SCAN cursor [MATCH pattern] [COUNT count] [TYPE type]
 ```
 
-示例如下所示：
+示例如下所示：  
 ![scan用法](/imgs/dbs/redis/redis-scan1.PNG)  
 如上图所示第一次调用scan，游标cursor为0，返回的结果为两个值的数组。  
 第一位为下次调用时需要用到的游标(cursor),第二位为数组类型的数值结果。  
