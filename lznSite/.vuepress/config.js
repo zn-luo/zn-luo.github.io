@@ -57,7 +57,7 @@ module.exports = {
           {
             text:"运维",
             items:[
-              {text:"膜拜Netfix", link:'/devops/' },
+              {text:"膜拜Netfix", link:'/devops/README.md' },
               {text:"微服务", link:'/devops/microsoft-core.md' },
               {text:"将工作标准化", link:'/devops/standardized-systems-and-models.md' },
               {text:"CMDB", link:'/devops/cmdb.md' },
