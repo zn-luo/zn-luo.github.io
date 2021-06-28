@@ -4,9 +4,13 @@
 import redis
 
 class RedisDelLarge(object):
-  def __init__(self,*args, **kwarg) -> None:
-      super().__init__()
+  def __init__(self,*args, **kwarg):
       self.red = redis.StrictRedis(*args, **kwarg)
+
+  def del_key(self, cursor = None, match=None, num=1000):
+      while cursor != 0:
+        cursor, data = self.red.scan(cursor if cursor else 0, match,num)
+        self.red.delete(*data)
 
   def del_large_hash(self, large_key, cursor = None,match=None,count=1000):
       """ Delete Large Hash Key
@@ -53,4 +57,4 @@ class RedisDelLarge(object):
         self.red.zremrangebyrank(large_key, 0, num-1)
 
 if __name__ == "__main__":
-  RedisDelLarge(host="localhost",port="6379").del_large_sorted_set_key("myzset", num=3)
+  RedisDelLarge(host="localhost",port="6379").del_key(match="key:*",num=1000)
