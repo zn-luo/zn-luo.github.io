@@ -57,7 +57,7 @@ module.exports = {
           {
             text:"运维",
             items:[
-              {text:"膜拜Netfix", link:'/devops/' },
+              {text:"膜拜Netfix", link:'/devops/netfix.md' },
               {text:"微服务", link:'/devops/microsoft-core.md' },
               {text:"将工作标准化", link:'/devops/standardized-systems-and-models.md' },
               {text:"CMDB", link:'/devops/cmdb.md' },
@@ -132,6 +132,7 @@ module.exports = {
             text:"设计模式",
             items:[
               {text:"5大要素",link:'/designPattern/5-elements.md'},
+              {text:"面向对象",link:'/designPattern/oo.md'},
               {text:"工厂",link:'/designPattern/factory/'},
               {text:"单例", link:'/designPattern/singleton/'}
             ]
