@@ -10,7 +10,8 @@ class RedisDelLarge(object):
   def del_key(self, cursor = None, match=None, num=1000):
       while cursor != 0:
         cursor, data = self.red.scan(cursor if cursor else 0, match,num)
-        self.red.delete(*data)
+        if data:
+          self.red.delete(*data)
 
   def del_large_hash(self, large_key, cursor = None,match=None,count=1000):
       """ Delete Large Hash Key
