@@ -113,6 +113,7 @@ module.exports = {
             items:[
               {text:"redis持久化磁盘负载", link:'/dbs/redis/redis-disk-load'},
               {text:"redis字条串类型", link:'/dbs/redis/string.md'},
+              {text:"Redis内存驱逐策略", link:'/dbs/redis/eviction-policies.md'},
               {text:"批量遍历命令scan", link:'/dbs/redis/scan.md'}
             ]
           },
