@@ -17,7 +17,7 @@ TCP是面向连接的，两端的应用程序能正常地进行收发数据时�
 tcp keepalive默认是关闭的，要启用tcp keepalive，需要设置SO_KEEPALIVE套接字选项。
 
 1. tcp_keepalive_time 设置每XX秒发送一次探测包，即最后一次数据传输结束到第一个保活探测包发送的时间间隔，即上面提到的计时器的值，linux系统默认值是7200s。
-2. tcp_keepalive_intvl 当经过tcp_keepalive_time空间时间而发送探测包后，没有收到对方的确认，则以tcp_keepalive_intvl为空闲时间间隔发送探测包，linux系统默认值是75s
+2. tcp_keepalive_intvl 当经过tcp_keepalive_time空闲时间而发送探测包后，没有收到对方的确认，则以tcp_keepalive_intvl为空闲时间间隔发送探测包，linux系统默认值是75s
 3. tcp_keepalive_probes 设置保活探测包发送的次数，linux系统默认值为9次
 
 ## python Demo

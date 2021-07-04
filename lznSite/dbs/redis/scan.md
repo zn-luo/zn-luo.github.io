@@ -101,4 +101,4 @@ redis 127.0.0.1:6379> SCAN 0 TYPE zset
 
 ## python实现各类大key的删除
 
-![python实现批量删除大数据的key](/imgs/dbs/redis/redis_del_large_key.py)
+![python实现批量删除大数据的key](/files/pys/redis_del_large_key.py)
