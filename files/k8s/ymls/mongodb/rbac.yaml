@@ -1,0 +1,25 @@
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  namespace: tct-dev
+  name: pod-reader
+rules:
+- apiGroups: [""] # "" 标明 core API 组
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: read-pods
+  namespace: tct-dev
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: tct-dev
+roleRef:  # "roleRef" 指定与某 Role 或 ClusterRole 的绑定关系 
+  kind: ClusterRole # 此字段必须是 Role 或 ClusterRole
+  name: pod-reader     # 此字段必须与你要绑定的 Role 或 ClusterRole 的名称匹配
+  apiGroup: rbac.authorization.k8s.io

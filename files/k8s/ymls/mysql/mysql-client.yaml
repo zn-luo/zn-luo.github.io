@@ -1,0 +1,58 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: mysql-client
+  namespace: tct-dev
+  labels:
+    run: mysql-client
+  annotations:
+    kubernetes.io/limit-ranger: 'LimitRanger plugin set: cpu, memory request for container mysql-client'
+spec:
+  volumes:
+    - name: default-token-jswzp
+      secret:
+        secretName: default-token-jswzp
+        defaultMode: 420
+  containers:
+    - name: mysql-client
+      image: 'mysql:5.7'
+      command: ["sleep","infinity"]
+      # args: 
+      #   - mysql
+      #   - '-h'
+      #   - mysql-0.mysql
+      #   - |        
+      #     CREATE DATABASE test; 
+      #     CREATE TABLE test.messages (message VARCHAR(250)); 
+      #     INSERT INTO test.messages VALUES ('hello'); 
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+      volumeMounts:
+        - name: default-token-jswzp
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      imagePullPolicy: IfNotPresent
+      stdin: true
+      stdinOnce: true
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 30
+  dnsPolicy: ClusterFirst
+  serviceAccountName: default
+  serviceAccount: default
+  securityContext: {}
+  schedulerName: default-scheduler
+  tolerations:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+  priority: 0
+  enableServiceLinks: true

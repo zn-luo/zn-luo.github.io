@@ -1,0 +1,1 @@
+/usr/local/kubernetes/nfs-pv *(no_root_squash,rw,sync,no_subtree_check)
