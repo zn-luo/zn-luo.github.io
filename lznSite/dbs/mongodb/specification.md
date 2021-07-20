@@ -60,7 +60,29 @@
 * 禁止更新数组内部分元素时，将数组全部拿出来更新后再写回去  
   推荐使用[arrayFileters](https://docs.mongodb.com/manual/reference/operator/update/positional-filtered/#std-label-positional-update-arrayFilters)仅对需要的元素进行修改。
 
-## 建议类
+### 建议类
 
 * 建议局部读写而不是全读全写  
   查询语句中应尽量使用 $projection 运算符投影出需要的字段；在 update 命令中如果只是修改某个字段，建议使用 $set，请勿将文档全部读出来修改后再全量写进去。
+* 线上环境慎重使用 db.collection.renameCollection() 命令  
+  renameCollection() 在4.0及之前的版本会阻塞 db 的所有操作；在4.2及其之后版本会阻塞当前表及目标表的操作。而且 renameCollection() 执行期间会造成游标失效、changeStream 失效及带 --oplog 命令的 mongodump 失败等问题。线上环境禁止高峰期直接操作。
+* 建议核心业务配置 WriteConcern 为 {w: “majority”} 参数  
+  默认情况下，一般驱动的 WriteConcern 配置为 {w:1}，即在主节点写入完成后认为请求成功。如果机器突然发生故障并且写入的数据还未复制到从节点，这样的配置会导致数据丢失。  
+  因此对于线上的核心业务，建议配置 {w: “majority”}，这样的配置会等数据同步大多数节点后再返回客户端。当然可靠性和性能不能兼顾，选择了 {w: “majority”} 配置后请求的延迟也会相应的增加。
+
+### 不建议类
+
+* 除非必要，不要在高性能场景大量使用多文档事务  
+  MongoDB 4.0 及之后的版本，MongoDB 提供了多文档事务。但是多文档事务只是 MongoDB 数据库能力的补充，在高并发高性能场景下，大规模使用多文档事务需要进行充分的压测。  
+  一般来说，多文档事务提交前需要在内存中保留快照，这可能消耗大量的 cache 从而导致性能下降。
+* 不建议使用短连接  
+  MongoDB 的认证逻辑是一个比较复杂的运算过程，而且默认 MongoDB 会为每个连接创建一个线程。大量短连接会对数据库产生较大的负担，特别是没有 mongos 的副本集集群。建议使用长连接，详细参考 mongodb url 中 Connection Pool 参数。
+
+## 分片集群设计规范
+
+* 如果使用 _id 字段作为片键，禁止使用范围分片  
+  id 默认是一个递增的序列，随着数据量的增加会一直增大。如果_id 作为片键并使用范围分片，集群随着数据的插入不断的进行 balance。
+* 分片集群禁止直连 mongod 节点写数据  
+  分片集群应该通过 mongos 写数据，直接通过 mongod 写入的数据无路由信息，会导致访问不到。
+* 线上环境禁止长时间关闭 balancer 和 autoSplit 配置  
+  关闭 balance 会导致片之间数据不均衡，关闭 autoSplit 可能会产生 jumbo chunk。
