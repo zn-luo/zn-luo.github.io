@@ -104,6 +104,7 @@ module.exports = {
               {text:"聚合", link:'/dbs/mongodb/aggregation.md'},
               {text:"模型设计基础", link:'/dbs/mongodb/basics-model-design.md'},
               {text:"分片集群的设计", link:'/dbs/mongodb/shard-design.md'},
+              {text:"规范", link:'/dbs/mongodb/specification.md'},
               {text:"备份与恢复", link:'/dbs/mongodb/back-recovery.md'},
               {text:"常用命令", link:'/dbs/mongodb/command.md'}
             ]
