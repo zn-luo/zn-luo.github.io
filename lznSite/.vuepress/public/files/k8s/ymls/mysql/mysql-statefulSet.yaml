@@ -52,7 +52,8 @@ spec:
           ordinal=${BASH_REMATCH[1]}
           [[ $ordinal -eq 0 ]] && exit 0
           # Clone data from previous peer.
-          ncat --recv-only $(hostname)-$(($ordinal-1)).mysql 3307 | xbstream -x -C /var/lib/mysql
+          h_name=$(hostname)
+          ncat --recv-only ${h_name%-*}-$(($ordinal-1)).mysql 3307 | xbstream -x -C /var/lib/mysql
           # Prepare the backup.
           xtrabackup --prepare --target-dir=/var/lib/mysql
         volumeMounts:
