@@ -1,0 +1,9 @@
+# vim and emacs temp files
+*~
+[._]*.s[a-w][a-z]
+
+.vscode/
+.tox/
+*.egg-info
+__*
+
