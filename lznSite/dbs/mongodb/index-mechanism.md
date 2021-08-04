@@ -16,11 +16,12 @@
     {firstName:1, lastName:1}  
     {firstName:1, lastName:1, gender:1}  
     查询条件命中此索引的前缀，该索引也会生效，所以不需要过多地创建索引  
-* Selectivity: 过滤性
+* Selectivity: 过滤性  
     如在一个有10000条记录的集合中有：
-    * 满足gender=F的记录有4000条
-    * 满足city=SZ的记录有1000条
-    * 满足ln=parker的记录有100条
+    1. 满足gender=F的记录有4000条
+    2. 满足city=SZ的记录有1000条
+    3. 满足ln=parker的记录有100条  
+
     条件ln能过滤掉最多的数据，city其次，gender最少。所以ln的过滤性大于city大于gender。  
     所以假设要给条件gender==F && city== SZ && ln ==parker建索引的话，  
     应该是:db.user.createIndex({ln:1, city: 1, gender:1})
