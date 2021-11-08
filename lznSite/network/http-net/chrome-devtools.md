@@ -1,4 +1,5 @@
 # [Chrome浏览器开发者工具](https://developer.chrome.com/docs/devtools/network/)
+
  web开发者快速定位HTTP协议问题的工具
 
 ## Network 面板
@@ -7,7 +8,7 @@
 
 * 控制器： 控制面板的外观与功能
 * 过滤器： 过滤请求列表中显示的资源
-    * 按住Command(Mac)或 Ctrl(Window/Linux), 然后点击过滤器可以同时选择多个过滤器
+  * 按住Command(Mac)或 Ctrl(Window/Linux), 然后点击过滤器可以同时选择多个过滤器
 * 概览： 显示HTTP请求、响应的时间轴
 * 请求列表：默认时间排序，可选择显示列
 * 概要： 请求总数、总数据量、总花费时间等
