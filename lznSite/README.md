@@ -13,5 +13,4 @@ features:
 - title: 自我成长
   details: 一个人的改变，源自於自我的一种用心进取，而不是等待什么天赐良机。
 footer: Copyright @ 2021 lzn
-<a href="http://s01.flagcounter.com/more/IEB"><img src="https://s01.flagcounter.com/count2/IEB/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_6/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 ---
