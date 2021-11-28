@@ -5,3 +5,4 @@
 3. [vim命令](/linux/commonCmds/vim.md)
 4. [Linux命令快捷键](/linux/commonCmds/move-cursor.md)
 5. [ps命令](/linux/commonCmds/ps.md)
+6. [mpstat命令](/linux/commonCmds/mpstat.md)
