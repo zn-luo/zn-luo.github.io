@@ -27,3 +27,7 @@ spec:
   ipFamilies:
     - IPv4
   ipFamilyPolicy: SingleStack
+
+#https://registry.hub.docker.com/r/atmoz/sftp
+#https://www.itnoteshare.com/course/25/551/previewcourse.htm
+#https://icode.best/i/00127635180094
