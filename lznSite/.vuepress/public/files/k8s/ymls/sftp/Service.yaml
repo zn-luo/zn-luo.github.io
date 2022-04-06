@@ -1,0 +1,29 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: sftp
+  namespace: tct-dev
+  labels:
+    app: sftp
+    version: v1
+  annotations:
+    kubesphere.io/creator: lzn
+    kubesphere.io/serviceType: statelessservice
+spec:
+  ports:
+    - name: tcp-22
+      protocol: TCP
+      port: 22
+      targetPort: 22
+      nodePort: 32756
+  selector:
+    app: sftp
+  clusterIP: 40.233.6.17
+  clusterIPs:
+    - 40.233.6.17
+  type: NodePort
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
