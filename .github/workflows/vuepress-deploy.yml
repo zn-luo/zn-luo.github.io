@@ -7,15 +7,21 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
 
-    # - name: vuepress-deploy
-    #   uses: luo-zn/vuepress-deploy@master
-    #   env:
-    #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-    #     # TARGET_REPO: zn-luo/zn-luo.github.io
-    #     TARGET_BRANCH: master
-    #     NODE_OPTIONS: --openssl-legacy-provider
-    #     BUILD_SCRIPT: npm install && npm run build
-    #     BUILD_DIR: lznSite/.vuepress/dist
+    - name: vuepress-deploy
+      uses: luo-zn/vuepress-deploy@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        # TARGET_REPO: zn-luo/zn-luo.github.io
+        TARGET_BRANCH: master
+        NODE_OPTIONS: --openssl-legacy-provider
+        BUILD_SCRIPT: npm install && npm run build
+        BUILD_DIR: lznSite/.vuepress/dist
+
+  build-and-deploy-to-gitee:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
 
     - name: vuepress deploy to gitee
       uses: luo-zn/vuepress-deploy@master

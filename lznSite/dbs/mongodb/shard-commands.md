@@ -1,11 +1,5 @@
 # 切片相关的命令
 
-## 给不存在的字段添加空字符串
-
-```bash
-db.users.update({'country': {$exists: false}}, {$set:{'country':''}}, {multi:true})
-```
-
 ## 将按区分片的User表取消切片
 
 步骤一:
