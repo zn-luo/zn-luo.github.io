@@ -107,7 +107,7 @@ module.exports = {
               {text:"分片集群的设计", link:'/dbs/mongodb/shard-design.md'},
               {text:"规范", link:'/dbs/mongodb/specification.md'},
               {text:"备份与恢复", link:'/dbs/mongodb/back-recovery.md'},
-              {text:"常用命令", link:'/dbs/mongodb/command.md'}
+              {text:"切片相关的命令", link:'/dbs/mongodb/shard-command.md'}
             ]
           },
           {
