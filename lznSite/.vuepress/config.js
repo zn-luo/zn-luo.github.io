@@ -93,6 +93,13 @@ module.exports = {
               {text:"tcp握手的性能优化与安全", link:'/network/tcp-net/tcp-performance-security.md'}
             ]
           }, 
+          {
+            text:"tr-069",
+            items:[
+              {text:"介绍", link:'/network/TR-069/introduction.md'},
+              {text:"架构", link:'/network/TR-069/architecture.md'}
+            ]
+          }, 
         ]
       },
       {
