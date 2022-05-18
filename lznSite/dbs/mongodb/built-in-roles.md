@@ -51,7 +51,7 @@ readWrite角色提供了以下的操作：
 
 此角色提供执行管理任务的能力，例如与模式相关的任务、索引和收集统计信息。
 
-该角色提供以下特权:
+该角色提供以下权限:
 
 * [system.profile](https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile)
   * [changeStream](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-changeStream)
@@ -97,7 +97,7 @@ readWrite角色提供了以下的操作：
 
 ### userAdmin
 
-提供了在当前数据库上创建和修改角色与用户的能力。由于userAdmin角色允许用户向任何用户(包括自己)授予任何特权，因此该角色还间接提供了超级用户对数据库的访问(如果作用域为admin数据库)，或者对集群的访问。
+提供了在当前数据库上创建和修改角色与用户的能力。由于userAdmin角色允许用户向任何用户(包括自己)授予任何权限，因此该角色还间接提供了超级用户对数据库的访问(如果作用域为admin数据库)，或者对集群的访问。
 
 userAdmin角色提供以下操作:  
 
@@ -308,14 +308,185 @@ clusterManager为config和local数据库提供了额外的权限。
 * [touch](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-touch)
 * [unlock](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-unlock)
 
-从4.4版开始，hostManager不再为集群提供[cpuProfiler](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-cpuProfiler)特权操作。
+从4.4版开始，hostManager不再为集群提供[cpuProfiler](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-cpuProfiler)权限操作。
 
 在集群的所有数据库上，提供[killCursors](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-killCursors)操作权限。
 
-## Backup与Restoration角色
+## backup与restore角色
 
 admin数据库提供backup和restore角色用于备份和恢复数据。
 
 ### backup
 
 提供了备份数据所需的最小权限。该角色提供足够的权限使用MongoDB Cloud Manager备份代理、Ops Manager备份代理，或者使用 mongodump备份整个mongod实例。
+
+为admin数据库的mms.backup表和config数据库的settings表提供[insert](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-insert)和[update](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-update)操作权限。
+
+在[anyResource](https://www.mongodb.com/docs/manual/reference/resource-document/#std-label-anyResource),提供以下操作权限:
+
+* [listDatabases](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-listDatabases)
+* [listCollections](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-listCollections)
+* [listIndexes](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-listIndexes)
+
+在整个[集群](https://www.mongodb.com/docs/manual/reference/resource-document/#std-label-resource-cluster)，提供以下操作权限:
+
+* [appendOplogNote](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-appendOplogNote)
+* [getParameter](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-getParameter)
+* [listDatabases](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-listDatabases)
+* [serverStatus(Starting in MongoDB 4.2)](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-serverStatus)
+
+在下面表中提供find操作权限:
+
+* 集群的所有非系统表，包括config和local数据库
+* 集群上的[system.js](https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.js)表和[system.profile](https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile)表
+* [admin.system.users](https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data-admin.system.users)表和[admin.system.roles](https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data-admin.system.roles)表
+* [config.settings](https://www.mongodb.com/docs/manual/reference/config-database/#mongodb-data-config.settings)表
+* MongoDB 2.6之前版本的system.users表
+
+为[config.settings](https://www.mongodb.com/docs/manual/reference/config-database/#mongodb-data-config.settings)表提供insert和update操作。
+
+从3.2.1版本开始，backup角色提供了备份[system.profile](https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile)表的权限。在之前的版本中，备份system.profile需要额外的读权限。
+
+### restore
+
+从3.6版本开始，在非系统表中提供[convertToCapped](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-convertToCapped)权限。
+
+在备份数据不包含[system.profile](https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile)表的数据，同时执行[mongorestore](https://www.mongodb.com/docs/database-tools/mongorestore/#mongodb-binary-bin.mongorestore)命令不带[--oplogReplay](https://www.mongodb.com/docs/database-tools/mongorestore/#std-option-mongorestore.--oplogReplay)参数时，restore角色提供了恢复数据时所需的权限。
+
+如果备份数据包含system.profile表的数据或者执行恢复时带有--oplogReplay，则需要下面的额外参数:  
+
+* system.profile  
+  如果备份数据中包含system.profile表的数据且目标数据库不包含system.profile表。即使程序实际上没有还原system.profile数据，mongorestore也会尝试创建此表。因此，用户需要额外的权限在数据库的system.profile表上执行createCollection和convertToCapped操作。  
+  内置角色dbAdmin和dbAdminAnyDatabase都提供了额外的权限。
+* --oplogReplay  
+  要使用--oplogReplay参数，需要创建一个自定义的角色，该角色在anyResource上具有anyAction权限。此角色最好只授予必须使用--oplogReplay运行mongorestore命令的用户。
+
+在整个集群上提供[getParameter](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-getParameter)操作权限。
+
+对所有非系统表提供以下操作权限:
+
+* [bypassDocumentValidation](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-bypassDocumentValidation)
+* [changeCustomData](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-changeCustomData)
+* [changePassword](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-changePassword)
+* [collMod](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-collMod)
+* [convertToCapped](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-convertToCapped)
+* [createCollection](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createCollection)
+* [createIndex](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createIndex)
+* [createRole](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createRole)
+* [createUser](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createUser)
+* [dropCollection](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-dropCollection)
+* [dropRole](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-dropRole)
+* [dropUser](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-dropUser)
+* [grantRole](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-grantRole)
+* [insert](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-insert)
+* [revokeRole](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-revokeRole)
+* [viewRole](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-viewRole)
+* [viewUser](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-viewUser)
+
+在[system.js](https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.js)表上提供以下操作权限:
+
+* [bypassDocumentValidation](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-bypassDocumentValidation)
+* [collMod](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-collMod)
+* [createCollection](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createCollection)
+* [createIndex](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createIndex)
+* [dropCollection](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-dropCollection)
+* [insert](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-insert)
+
+对[anyResource](https://www.mongodb.com/docs/manual/reference/resource-document/#std-label-anyResource)提供了[listCollections](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-listCollections)操作权限。
+
+对config和local数据库的所有非系统表提供了以下操作权限:
+
+* [bypassDocumentValidation](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-bypassDocumentValidation)
+* [collMod](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-collMod)
+* [createCollection](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createCollection)
+* [createIndex](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createIndex)
+* [dropCollection](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-dropCollection)
+* [insert](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-insert)
+
+在[admin.system.version](https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data-admin.system.version)提供了以下操作权限:
+
+* [bypassDocumentValidation](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-bypassDocumentValidation)
+* [collMod](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-collMod)
+* [createCollection](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createCollection)
+* [createIndex](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createIndex)
+* [dropCollection](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-dropCollection)
+* [find](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-find)
+* [insert](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-insert)
+
+在[admin.system.roles](https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data-admin.system.roles)提供了[createIndex](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createIndex)操作权限。
+
+对admin.system.users和遗留的system.users表提供以下操作权限:
+
+* [bypassDocumentValidation](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-bypassDocumentValidation)
+* [collMod](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-collMod)
+* [createCollection](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createCollection)
+* [createIndex](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createIndex)
+* [dropCollection](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-dropCollection)
+* [find](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-find)
+* [insert](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-insert)
+* [remove](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-remove)
+* [update](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-update)
+
+## All-Database角色
+
+以下角色在admin数据库上可用，并提供适用于除local和config之外的所有数据库的权限。
+
+### readAnyDatabase
+
+在所有的数据库(local和config数据库除外)上提供了与read角色相同的只读权限。该角色还在整个集群上提供了[listDatabases](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-listDatabases)操作权限。
+
+在3.4版本之前，readAnyDatabase权限包含local和config数据库。要为local数据库提供读权限，需在admin数据库为local数据库创建一个具有read角色的用户。
+
+要访问config和local数据库，参考[clusterManager](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-clusterManager)和[clusterMonitor](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-clusterMonitor)角色。
+
+### readWriteAnyDatabase
+
+在所有的数据库(local和config数据库除外)上提供了与readWrite角色相同的读写权限。该角色还在整个集群上提供[listDatabases](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-listDatabases)操作权限。
+
+在3.4版本之前，readWriteAnyDatabase权限包含local和config数据库。要为local数据库提供读写权限，需在admin数据库为local数据库创建一个具有readWriteAnyDatabase角色的用户。
+
+### userAdminAnyDatabase
+
+在所有的数据库(local和config数据库除外)上提供了与userAdmin角色相同的管理操作权限。
+
+userAdminAnyDatabase还在集群上提供了以下操作权限:
+
+* [authSchemaUpgrade](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-authSchemaUpgrade)
+* [invalidateUserCache](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-invalidateUserCache)
+* [listDatabases](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-listDatabases)
+
+该角色还在admin数据库的system.users和system.roles表以及2.6之前版本的system.users表上提供以下操作权限:
+
+* [collStats](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-collStats)
+* [dbHash](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-dbHash)
+* [dbStats](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-dbStats)
+* [find](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-find)
+* [killCursors](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-killCursors)
+* [planCacheRead](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-planCacheRead)
+
+2.6.4版本的修改: userAdminAnyDatabase角色在admin.system.users和admin.system.roles表上添加了下面的权限:
+
+* [createIndex](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-createIndex)
+* [dropIndex](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-dropIndex)
+
+userAdminAnyDatabase角色不限制用户可以授予的权限。因此，userAdminAnyDatabase用户可以授予自己超过当前权限的权限，甚至可以授予自己所有权限，即使角色没有显式地授予用户管理权限以外的权限。这个角色实际上是MongoDB系统的超级用户。
+
+3.4的修改: userAdminAnyDatabase不再适用于local和config数据库。
+
+### dbAdminAnyDatabase
+
+在所有的数据库(local和config数据库除外)上提供了与dbAdmin角色相同的操作权限。该角色还在整个集群上提供[listDatabases](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-listDatabases)操作权限。
+
+在3.4版本之前，dbAdminAnyDatabase权限包含local和config数据库。要为local数据库提供dbAdmin权限，需在admin数据库为local数据库创建一个具有dbAdmin 角色的用户。
+
+从5.0版本开始,dbAdminAnyDatabase包含[applyOps](https://www.mongodb.com/docs/manual/reference/privilege-actions/#std-label-internal-actions)操作权限。
+
+## Superuser角色
+
+有几种角色间接或直接地提供系统级superuser的访问权限。
+
+以下角色提供了为任何用户分配对任何数据库的任何权限的能力，这意味着拥有这些角色之一的用户可以为自己分配对任何数据库的任何权限:
+
+* dbOwner角色，当作用域为admin数据库时
+* userAdmin角色，当作用域为admin数据库时
+* userAdminAnyDatabase角色
