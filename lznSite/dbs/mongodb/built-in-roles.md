@@ -490,3 +490,26 @@ userAdminAnyDatabase角色不限制用户可以授予的权限。因此，userAd
 * dbOwner角色，当作用域为admin数据库时
 * userAdmin角色，当作用域为admin数据库时
 * userAdminAnyDatabase角色
+
+### root
+
+root角色提供了所有的权限。相当于下面所有角色权限的组合:
+
+* [readWriteAnyDatabase](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWriteAnyDatabase)
+* [dbAdminAnyDatabase](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdminAnyDatabase)
+* [userAdminAnyDatabase](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-userAdminAnyDatabase)
+* [clusterAdmin](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-clusterAdmin)
+* [restore](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-restore)
+* [backup](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-backup)
+
+同时还提供了对system.表的[validate](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-validate)权限操作。
+
+3.4版本的修改: root角色包含了backup和restore角色的权限。
+
+## 内部角色
+
+### __system
+
+MongoDB将此角色分配给代表集群成员的用户对象，例如副本集成员和mongos实例。角色赋予它的持有者对数据库中的任何对象采取任何操作的权利。
+
+除非在特殊情况下，不要将此角色分配给代表应用程序或管理人员的用户。
