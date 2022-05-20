@@ -114,6 +114,7 @@ module.exports = {
               {text:"分片集群的设计", link:'/dbs/mongodb/shard-design.md'},
               {text:"规范", link:'/dbs/mongodb/specification.md'},
               {text:"内置角色", link:'/dbs/mongodb/built-in-roles.md'},
+              {text:"自定义角色", link:'/dbs/mongodb/user-defined-roles.md'},
               {text:"备份与恢复", link:'/dbs/mongodb/back-recovery.md'},
               {text:"常用命令", link:'/dbs/mongodb/commands.md'}
             ]
