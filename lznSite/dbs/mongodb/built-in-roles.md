@@ -2,7 +2,11 @@
 
 MongoDB通过[基于角色的授权](https://www.mongodb.com/docs/manual/core/authorization/#std-label-roles)授予对数据和命令的访问权，并提供内置的角色，这些角色提供数据库系统中通常需要的不同级别的访问权。MongoDB也提供了[用户自定义角色](https://www.mongodb.com/docs/manual/core/security-user-defined-roles/#std-label-user-defined-roles)功能。
 
-## 数据库用户角色
+## 思维导图
+
+![mongodb内置角色权限](/imgs/dbs/mongodb/mongodb-built-in-roles.png)
+
+## 普通用户角色
 
 ### read
 
@@ -455,7 +459,7 @@ userAdminAnyDatabase还在集群上提供了以下操作权限:
 * [invalidateUserCache](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-invalidateUserCache)
 * [listDatabases](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-listDatabases)
 
-该角色还在admin数据库的system.users和system.roles表以及2.6之前版本的system.users表上提供以下操作权限:
+该角色还在admin数据库的system.users和system.roles表以及2.6之前版本的遗留system.users表上提供以下操作权限:
 
 * [collStats](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-collStats)
 * [dbHash](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-dbHash)
