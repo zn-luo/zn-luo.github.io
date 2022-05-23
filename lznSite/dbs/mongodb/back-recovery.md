@@ -43,10 +43,10 @@ mongodump:
 * 应该结合oplog进行幂等操作
 
 如下图1所示，当只执行mongodump时，从t0开始dump数据，进行到t1时A还是10，当到t2时A被改为了20，最后在t3时间点结束，此时A的数据仍然是10，因为在t2时间点修改之前A已经被dump出数据库：  
-![mongodump](/imgs/dbs/mongodump.jpg)
+![mongodump](/imgs/dbs/mongodb/mongodump.jpg)
 
 如下图2所示，执行mongodump加oplog操作，由于oplog是幂等性操作的，所以能够保证在执行mongodump时数据被修改的情况：  
-![mongodump-oplog.jpg](/imgs/dbs/mongodump-oplog.jpg)
+![mongodump-oplog.jpg](/imgs/dbs/mongodb/mongodump-oplog.jpg)
 
 ## mongodump与mongorestore的重要参数
 
