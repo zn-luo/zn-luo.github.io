@@ -4,7 +4,7 @@ MongoDB通过[基于角色的授权](https://www.mongodb.com/docs/manual/core/au
 
 ## 思维导图
 
-[![mongodb内置角色权限](/imgs/dbs/mongodb/mongodb-built-in-roles.png)](https://www.processon.com/mindmap/628744336376893bcc0ae087)
+[![mongodb内置角色权限](/imgs/dbs/mongodb/mongodb-built-in-roles.png)](https://www.processon.com/view/628744336376893bcc0ae087)
 
 ## 普通用户角色
 
