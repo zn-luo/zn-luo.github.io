@@ -13,7 +13,8 @@ module.exports = {
   head:[
     ['link',{rel:"icon",  href:"/imgs/favicon.ico"}]
   ],
-  themeConfig:{    
+  themeConfig:{   
+    sidebarDepth: 3, 
     nav:[
       {text:"主页", link: '/'},
       {
@@ -116,7 +117,6 @@ module.exports = {
               {text:"内置角色", link:'/dbs/mongodb/built-in-roles.md'},
               {text:"自定义角色", link:'/dbs/mongodb/user-defined-roles.md'},
               {text:"备份与恢复", link:'/dbs/mongodb/back-recovery.md'},
-              // {text:"常用命令", link:'/dbs/mongodb/commands.md'}
               {text:"常用命令",items:[
                 {text:"数据库命令", link:'/dbs/mongodb/commands.md'},
                 {text:"数据库命令", link:'/dbs/mongodb/commands.md'}
