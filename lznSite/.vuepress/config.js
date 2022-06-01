@@ -118,7 +118,7 @@ module.exports = {
               {text:"备份与恢复", link:'/dbs/mongodb/back-recovery.md'},
               // {text:"常用命令", link:'/dbs/mongodb/commands.md'}
               {text:"常用命令",items:[
-                {text:"数据库命令", link:'/dbs/mongodb/commands.md'
+                {text:"数据库命令", link:'/dbs/mongodb/commands.md'}
               ]}
             ]
           },
