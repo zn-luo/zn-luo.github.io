@@ -26,7 +26,7 @@ CPE广域网管理协议旨在支持各种功能来管理一组CPE，包括以�
 ## 在端到端体系结构中的定位
 
 ACS是驻留在网络中的服务器，用于管理用户场所中的设备。CPE广域网管理协议可以用来管理DSL B-NTs和其他类型的CPE，包括独立路由器和局域网侧客户端设备。它与服务提供者使用的特定访问媒体无关，尽管它依赖于设备已建立的IP层连接。  
-![端到端架构图](/imgs/network/tr-069/TR-069-end2end-architecture.png)
+[![端到端架构图](/imgs/network/tr-069/TR-069-end2end-architecture.png)](https://www.processon.com/view/6266432ae401fd0162e3d31d)
 
 ## 安全目标
 
