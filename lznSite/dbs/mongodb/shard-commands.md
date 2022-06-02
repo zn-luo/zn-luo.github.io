@@ -42,3 +42,5 @@ mongos> use admin
 switched to db admin
 mongos> db.adminCommand("flushRouterConfig")  ##刷新路由配置
 ```
+
+<Vssue :title="$title" :options="{ locale: 'zh' }" />

@@ -19,3 +19,5 @@ db.getSiblingDB("myDB").createUser({
   roles:[{role:"dbOwner",db:"myDB"}]
 });
 ```
+
+<Vssue :title="$title" :options="{ locale: 'zh' }" />

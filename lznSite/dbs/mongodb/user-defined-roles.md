@@ -19,3 +19,5 @@ MongoDB提供了[db.createRole()](https://www.mongodb.com/docs/manual/reference/
 MongoDB将所有的角色信息存储在admin数据库的system.roles表。
 
 不要直接访问此表，要通过[角色管理命令](https://www.mongodb.com/docs/manual/reference/command/#std-label-role-management-commands)来管理自定的角色。
+
+<Vssue :title="$title" :options="{ locale: 'zh' }" />

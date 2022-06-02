@@ -89,3 +89,5 @@ $facet/$bucket|分面搜索 |       N/A      |
         }}
     ]);
     ```
+
+<Vssue :title="$title" :options="{ locale: 'zh' }" />
