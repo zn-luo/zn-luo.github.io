@@ -10,4 +10,4 @@
 8. [vim命令](/linux/commonCmds/vim.md)
 9. [nsenter命令](/linux/commonCmds/nsenter.md)
 
-<Vssue :title="$title" />
+<Vssue :title="$title" :options="{ locale: 'zh' }" />
