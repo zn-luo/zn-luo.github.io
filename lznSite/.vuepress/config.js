@@ -1,6 +1,15 @@
 const path=require("path");
 
 module.exports = {
+  plugins: [
+    ['@vssue/vuepress-plugin-vssue', {
+      platform: 'github',
+      owner: 'zn-luo',
+      repo: 'zn-luo.github.io',
+      clientId: '9a7e95404883b145e727',
+      clientSecret: '1f4982c512b561db9f68fb87348df9eef63e93b2',
+    }],
+  ],
   configureWebpack:{
     resolve:{
       alias:{

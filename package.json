@@ -11,6 +11,8 @@
     "build": "vuepress build lznSite"
   },
   "dependencies": {
+    "@vssue/api-github-v3": "^1.4.7",
+    "@vssue/vuepress-plugin-vssue": "^1.4.8",
     "vue": "^2.6.12",
     "vuepress": "^1.5.4"
   }
