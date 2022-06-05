@@ -28,3 +28,5 @@ win10的VPN客户端正常配置，连接成功，但网络及无法访问外网
     ![网络连接VPN-V](/imgs/windwos/win10-ipsec-vpn/net-conn-vpn-V.PNG)
 6. 在弹出框中将在远程网络上使用默认网关打勾，然后点击确定，如下图所示
     ![网络连接VPN-U](/imgs/windwos/win10-ipsec-vpn/net-conn-vpn-U.PNG)
+
+<Vssue :title="$title" :options="{ locale: 'zh' }" />

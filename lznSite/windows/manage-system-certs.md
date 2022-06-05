@@ -5,3 +5,5 @@
   ![运行界面](/imgs/windwos/certmgr-ui.PNG)
 3. 点击确定后弹出如下管理界面，如下图所示:  
   ![证书管理界面](/imgs/windwos/certmgr-ui.PNG)
+
+<Vssue :title="$title" :options="{ locale: 'zh' }" />
