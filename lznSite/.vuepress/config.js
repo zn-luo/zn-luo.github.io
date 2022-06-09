@@ -64,7 +64,14 @@ module.exports = {
               {text:"缓解DDoS攻击的方法", link:'/linux/performance/resist-ddos.md'},
               {text:"平均负载", link:'/linux/performance/load-average.md'}
             ]
-          },      
+          },
+          {
+            text:"windows",
+            items:[
+              {text:"windows查看系统证书", link:'/windows/manage-system-certs.md'},
+              {text:"win10的VPN无法连接ipsec访问外网的解决方法", link:'/windows/vpn-ipsec-gateway.md'}
+            ]
+          },        
           {
             text:"运维",
             items:[
