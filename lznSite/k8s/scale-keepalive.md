@@ -5,7 +5,7 @@
 
 ## 解决方法
 
-本次实验的解决方法是学习腾讯云原生架构师roc[解决思路](https://tencentcloudcontainerteam.github.io/tke-handbook/best-practice/scale-keepalive-service.html)。  
+本次实验的解决方法是学习腾讯云原生架构师roc的[解决思路](https://tencentcloudcontainerteam.github.io/tke-handbook/best-practice/scale-keepalive-service.html)。  
 
 roc参考了nginx的keepalive设计原理，nginx的keepalive_requests配置项设定了一个TCP连接能处理的最大请求数，当达到设定值后服务端会在http的Header头标记"Connection:close"，通知客户端处理完当前的请求后关闭连接，新的请求需要重新建立TCP连接，所以这个过程不会出现请求失败，同时做到将长连接按需转换为短连接的目的。通过此方法客户端和k8s服务端处理完一批请求后不断地更新TCP连接，自动扩容的新POD能接收到新的连接请求，从而解决了自动扩容失效的问题。  
 
@@ -13,7 +13,7 @@ roc参考了nginx的keepalive设计原理，nginx的keepalive_requests配置项�
 
 ### Golang编写的服务端代码
 
-代码借鉴于roc示例，添加了MAX_REQUEST环境变量。
+代码借鉴于roc示例，添加了MAX_REQUEST环境变量，便于设置模拟请求数的最大值。
 
 ```go
 package main
@@ -109,20 +109,22 @@ func main() {
 
 我的k8s环境是采用kubesphere系统部署管理的，所以会界面显示实验结果。
 
-### k8s长连接扩容后失效
+### k8s长连接扩容失效场景
 
 1. 使用上面代码镜像创建deployment，不设置MAX_REQUEST环境变量
-2. 初始部署时副本数设为1，k8s设置自动伸缩阀值(如下图所示)，用脚本模拟客户端发起长连接且不断发请求，负载增大，触发扩容，pod由原来的1个扩到2个。  
-  ![k8s扩容1](/imgs/k8s/scale-keepalive/scale-keepalive-1.PNG)
-3. 虽然k8s自动扩容了，但实际请求只会被路由到旧的POD当中，如上图所示，旧pod的负载比新pod的负载高，从pod返回的结果(如下图所示)可以看出，响应全都只是来自于k8s-scale-keepalive-test-v1-6c6dc5cc49-6wcks。  
-  ![k8s扩容1结果](/imgs/k8s/scale-keepalive/scale-keepalive-res-1.PNG)
+2. 初始部署时副本数设为1，k8s设置自动伸缩阀值，目标cpu用量设置为5%,目标内存用量设置为8M(如下图1所示),模拟场景不需太大的值。
+3. 用脚本模拟客户端发起长连接且不断发请求，负载增大，触发扩容，pod由原来的1个扩到2个，如下图1所示。  
+  ![k8s扩容1](/imgs/k8s/scale-keepalive/scale-keepalive-1.PNG "图1")
+4. 虽然k8s自动扩容了，但实际请求只会被路由到旧的POD当中，如上图所示，旧pod的负载比新pod的负载高，从pod返回的结果(如下图2所示)可以看出，响应全都只是来自于k8s-scale-keepalive-test-v1-6c6dc5cc49-6wcks。  
+  ![k8s扩容1结果](/imgs/k8s/scale-keepalive/scale-keepalive-res-1.PNG "图2")
 
 ### 增加tcp计数器后k8s长连接扩容生效
 
 1. 使用上面代码镜像创建deployment，设置MAX_REQUEST环境变量为5,即长连接每处理掉5个请求就会通知客户端关闭连接。
-2. 初始部署的副本数仍设为1，k8s设置自动伸缩阀值(如下图所示)，用脚本模拟客户端发起长连接且不断发请求，负载增大，触发扩容，pod由原来的1个扩到2个。  
-  ![k8s扩容2](/imgs/k8s/scale-keepalive/scale-keepalive-2.PNG)
-3. 此次k8s自动扩容承载请求生效了，请求会被均匀路由到两个POD当中，如上图所示，旧pod的负载与新pod的负载接近，从pod返回的结果(如下图所示)可以看出，响应均匀地来自两个pod分另为k8s-scale-keepalive-test-v1-6575b686b4-w9cfn和k8s-scale-keepalive-test-v1-6575b686b4-5x6tk,pod每处理完5个请求都会通知客户端关闭连接，新请求重新建立连接。  
-  ![k8s扩容2结果](/imgs/k8s/scale-keepalive/scale-keepalive-res-2.PNG)
+2. 初始部署的副本数仍设为1，k8s设置自动伸缩阀值(如下图3所示)
+3. 用脚本模拟客户端发起长连接且不断发请求，负载增大，触发扩容，pod由原来的1个扩到2个，如下图3所示。  
+  ![k8s扩容2](/imgs/k8s/scale-keepalive/scale-keepalive-2.PNG "图3")
+4. 此次k8s自动扩容承载请求生效了，请求会被均匀路由到两个POD当中，如上图3所示，旧pod的负载与新pod的负载接近，从pod返回的结果(如下图4所示)可以看出，响应均匀地来自两个pod分另为k8s-scale-keepalive-test-v1-6575b686b4-w9cfn和k8s-scale-keepalive-test-v1-6575b686b4-5x6tk, pod每处理完5个请求都会通知客户端关闭连接，新请求重新建立连接。  
+  ![k8s扩容2结果](/imgs/k8s/scale-keepalive/scale-keepalive-res-2.PNG "图4")
 
 <Vssue :title="$title" :options="{ locale: 'zh' }" />
