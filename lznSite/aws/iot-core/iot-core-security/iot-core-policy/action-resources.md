@@ -22,3 +22,5 @@ arn:aws:iot: region : AWS-account-ID : Resource-type/Resource-name
 |iot:Subscribe|topicfilter|主题筛选器字符串|arn:aws:iot:us-east-1:123456789012:topicfilter/myTopicFilter
 |iot:UpdateJobExecution|thing|物品的名字|arn:aws:iot:us-east-1:123456789012:thing/thingOne
 |iot:UpdateThingShadow|thing|The thing's name, and the shadow's name, if applicable|arn:aws:iot:us-east-1:123456789012:thing/thingOne<br>arn:aws:iot:us-east-1:123456789012:thing/thingOne/shadowOne
+
+<Vssue :title="$title" :options="{ locale: 'zh' }" />

@@ -9,3 +9,5 @@ IoT Core策略是包含一个或多个策略语句的JSON文档。每个语句�
 * Effect：它指定操作是被允许还是被拒绝
 * Action：它指定操作的策略是被允许或被拒绝
 * Resource：它指定操作的资源是被允许还是被拒绝
+
+<Vssue :title="$title" :options="{ locale: 'zh' }" />
