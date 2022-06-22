@@ -11,7 +11,7 @@
 ## 索引规范
 
 * 创建索引时要带上background参数，特别是生产环境  
-  MongoDB 4.2及之前版本，createIndex()命令默认是foreground模式，这种模式下创建索引会阻塞数据库的所有操作，会造成业务中。示例： db.users.createIndex({user_id}:1}, {unique:true, background:true})
+  MongoDB 4.2及之前版本，createIndex()命令默认是foreground模式，这种模式下创建索引会阻塞数据库的所有操作，会造成业务中。示例： db.users.createIndex({user_id:1}, {unique:true, background:true})
 * 排序字段需要创建索引，避免业务大量在内存中排序造成数据库OOM(Out Of Memory)  
   * MongoDB 4.2及之前的版本，一条查询默认只允许使用32MB内存进行排序，如果超出会提示Sort operation used more than the maximum 33554432 bytes of RAM错误，通过执行db.adminCommand({setParameter : 1,"internalQueryExecMaxBlockingSortBytes" : 104857600})调整内存。
   * 生产环境禁止调整，这样会增大数据库OOM的概率。建索引时就应该考滤加入排序字段。
