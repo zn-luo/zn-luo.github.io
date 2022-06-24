@@ -2,7 +2,8 @@
 
 ## win10的VPN无法连接ipsec网络
 
-解释方法:  
+解决方法:  
+
 1. 快捷键执行win + R,在弹出的运行界面中输入regedit,如下图所示
     ![打开注册表](/imgs/windwos/win10-ipsec-vpn/run-ui.PNG)
 2. 找到 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent,将AssumeUDPEncapsulationContextOnSendRule的值设置为2，如下图所示
@@ -15,8 +16,9 @@
 
 win10的VPN客户端正常配置，连接成功，但网络及无法访问外网
 
-解释方法:  
-1. 右键单击开始菜单图标,再点击网络连接，如下图所示
+解决方法:  
+
+1. 右键单击开始菜单图标,再点击网络连接，如下图所示  
     ![网络连接](/imgs/windwos/win10-ipsec-vpn/net-conn.PNG)
 2. 点击以太网，再选择更改适配器选项，如下图所示
     ![网络连接设置](/imgs/windwos/win10-ipsec-vpn/net-conn-setting.PNG)
