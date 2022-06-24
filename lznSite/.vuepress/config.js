@@ -196,12 +196,12 @@ module.exports = {
             text: "AWS",
             items:[
               {text:"AWS云主机重启后无法ssh登陆", link:'/aws/ec2/instance-not-restart.md' }, 
-              {text:"IoT Core 策略", link:'/aws/iot-core/iot-core-security/iot-core-policy/README.md' },
+              {text:"IoT Core 策略", link:'/aws/iot-core/iot-core-security/iot-core-policy/' },
               {text:"IoT Core 策略 actions", link:'/aws/iot-core/iot-core-security/iot-core-policy/policy-actions.md' },       
               {text:"AWS IoT Core 策略变量", link:'/aws/iot-core/iot-core-security/iot-core-policy/policy-variables.md' },      
               {text:"AWS IoT Core action resources", link:'/aws/iot-core/iot-core-security/iot-core-policy/action-resources.md' },
               {text:"物品(Thing)策略变量", link:'/aws/iot-core/iot-core-security/iot-core-policy/thing-policy-variables.md' },
-              {text:"Route53 域名转移步骤", link:'/aws/Route53/transferring-domains/README.md' },
+              {text:"Route53 域名转移步骤", link:'/aws/Route53/transferring-domains/' },
               {text:"Route53 顶级域名的转移要求", link:'/aws/Route53/transferring-domains/Transfer-requirements-for-top-leveldomain.md' },
             ]
           }
