@@ -178,16 +178,33 @@ module.exports = {
         ]
       },
       {
-        text:"k8s",
+        text:"云",
         items:[
-          {text:"容器基础", link:'/k8s/container-basis.md' },          
-          {text:"K8S概述", link:'/k8s/k8s-base-overview.md' },
-          {text:"pod", link:'/k8s/pod.md' },
-          {text:"docker0网桥", link:'/k8s/docker-bridge.md' },
-          {text:"修改docker与kubelet的Cgroup驱动", link:'/k8s/change-cgroup.md' },
-          {text:"kubeadmin+ansible安装k8s v.111.1", link:'/k8s/kubeadmin-install-k8s-v1.11.1.md' },
-          {text:"calico网络故障(BIRD is not ready)", link:'/k8s/calico-bgp-not-established.md' },
-          {text:"长连接服务新扩容的pod无法接收请求", link:'/k8s/scale-keepalive.md' }
+          {
+            text: "k8s",
+            items:[
+              {text:"容器基础", link:'/k8s/container-basis.md' },          
+              {text:"K8S概述", link:'/k8s/k8s-base-overview.md' },
+              {text:"pod", link:'/k8s/pod.md' },
+              {text:"docker0网桥", link:'/k8s/docker-bridge.md' },
+              {text:"修改docker与kubelet的Cgroup驱动", link:'/k8s/change-cgroup.md' },
+              {text:"kubeadmin+ansible安装k8s v.111.1", link:'/k8s/kubeadmin-install-k8s-v1.11.1.md' },
+              {text:"calico网络故障(BIRD is not ready)", link:'/k8s/calico-bgp-not-established.md' },
+              {text:"长连接服务新扩容的pod无法接收请求", link:'/k8s/scale-keepalive.md' }
+            ]
+          },{
+            text: "AWS",
+            items:[
+              {text:"AWS云主机重启后无法ssh登陆", link:'/aws/ec2/instance-not-restart.md' }, 
+              {text:"IoT Core 策略", link:'/aws/iot-core/iot-core-security/iot-core-policy/README.md' },
+              {text:"IoT Core 策略 actions", link:'/aws/iot-core/iot-core-security/iot-core-policy/policy-actions.md' },       
+              {text:"AWS IoT Core 策略变量", link:'/aws/iot-core/iot-core-security/iot-core-policy/policy-variables.md' },      
+              {text:"AWS IoT Core action resources", link:'/aws/iot-core/iot-core-security/iot-core-policy/action-resources.md' },
+              {text:"物品(Thing)策略变量", link:'/aws/iot-core/iot-core-security/iot-core-policy/thing-policy-variables.md' },
+              {text:"Route53 域名转移步骤", link:'/aws/Route53/transferring-domains/README.md' },
+              {text:"Route53 顶级域名的转移要求", link:'/aws/Route53/transferring-domains/Transfer-requirements-for-top-leveldomain.md' },
+            ]
+          }
         ]
       },
       {
