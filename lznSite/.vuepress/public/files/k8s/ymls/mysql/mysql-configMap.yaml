@@ -13,3 +13,14 @@ data:
     # 从节点 MySQL 的配置文件     
     [mysqld]     
     super-read-only 
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+  namespace: cmp
+  annotations:
+    kubesphere.io/creator: lzn
+data:
+  password: cm9vdFB3ZEBAITUzNA==
+type: Opaque

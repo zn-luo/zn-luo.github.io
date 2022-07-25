@@ -156,7 +156,7 @@ spec:
             # 使用 change_master_to.sql.orig 的内容，也就是前面拼装的 SQL，组成一个完整的初始化和启动 Slave 的 SQL 语句
             mysql -h 127.0.0.1 -uroot -p${MYSQL_ROOT_PASSWORD} << EOF
           $(< change_master_to.sql.orig),
-            MASTER_HOST='mysql-0.mysql.mysql',
+            MASTER_HOST='mysql-0.mysql',
             MASTER_USER='root',
             MASTER_PASSWORD='${MYSQL_ROOT_PASSWORD}',
             MASTER_CONNECT_RETRY=10;
