@@ -191,7 +191,8 @@ module.exports = {
               {text:"修改docker与kubelet的Cgroup驱动", link:'/k8s/change-cgroup.md' },
               {text:"kubeadmin+ansible安装k8s v.111.1", link:'/k8s/kubeadmin-install-k8s-v1.11.1.md' },
               {text:"calico网络故障(BIRD is not ready)", link:'/k8s/calico-bgp-not-established.md' },
-              {text:"长连接服务新扩容的pod无法接收请求", link:'/k8s/scale-keepalive.md' }
+              {text:"长连接服务新扩容的pod无法接收请求", link:'/k8s/scale-keepalive.md' },
+              {text:"使用cert-manager签发Let's Encrypt免费证书", link:'/k8s/cert-manager-route53-dns01.md' }
             ]
           },{
             text: "AWS",
