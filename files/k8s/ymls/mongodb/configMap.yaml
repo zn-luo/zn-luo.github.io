@@ -1,0 +1,48 @@
+apiVersion: v1 
+kind: ConfigMap 
+metadata:   
+  name: mongodb   
+  labels:     
+    app: mongodb 
+data:   
+  mongo-config.conf: |     
+    storage:
+      dbPath: /data/db
+      journal:
+        enabled: true
+
+    #systemLog:
+    #  destination: file
+    #  path: /data/configdb/mongod.log
+    #  logAppend: true
+
+    net:
+      bindIp: 0.0.0.0
+    #  port: 27017
+
+    replication:
+      replSetName: cfgrs    #Used for config server
+
+    sharding:
+      clusterRole: configsvr
+  
+  mongo-shard.conf: |     
+    storage:
+      dbPath: /data/db
+      journal:
+        enabled: true
+
+    systemLog:
+      destination: file
+      path: /data/configdb/mongod.log
+      logAppend: true
+
+    net:
+      bindIp: 0.0.0.0
+    #  port: 27017
+
+    #replication:
+    #  replSetName: rs0
+
+    sharding:
+      clusterRole: shardsvr   #Used for shard

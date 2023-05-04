@@ -1,0 +1,168 @@
+---
+#ansible version 2.9.9
+- name: Gather facts for all hosts
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Gather facts
+      setup:
+  tags: always
+
+- name: All nodes
+  hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Set hostname 
+      hostname: 
+        name: "{{ inventory_hostname }}"
+
+    # - name: hostvars 
+    #   debug: msg="{{ hostvars['node2'] }}"
+
+    - name: Add IP address of all hosts to all hosts
+      lineinfile:
+        dest: /etc/hosts
+        regexp: '.*{{ item }}$'
+        line: "{{ hostvars[item]['ansible_default_ipv4']['address'] }} {{item}}"
+        state: present
+      with_items: "{{ groups.all }}"
+      
+    - name: Disable SWAP since kubernetes can't work with swap enabled (1/2)
+      shell: |
+        swapoff -a
+
+    - name: Disable SWAP in fstab since kubernetes can't work with swap enabled (2/2)
+      replace:
+        path: /etc/fstab
+        regexp: '^([^#].*?\sswap\s+sw\s+.*)$'
+        replace: '# \1'
+    
+    - name: load missing kernel modules 
+      modprobe:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - ip_vs 
+        - ip_vs_rr 
+        - ip_vs_wrr 
+        - ip_vs_sh
+
+    - block:    
+        - name: apt-key add download.docker.com gpg 
+          apt_key:
+            url: https://download.docker.com/linux/ubuntu/gpg
+            state: present
+
+        - name: apt-key add download.docker.com gpg 
+          apt_key:
+            url: https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg
+            state: present
+
+        - name: add download.docker.com
+          raw: |
+                cat <<EOF > /etc/apt/sources.list.d/docker-ce.list
+                deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)   stable 
+                EOF
+    
+        - name: add k8s sources repos 
+          raw: |
+              cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+              deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
+              EOF
+
+        - name: Install docker-ce kubeadm kubelet in ubuntu
+          apt:
+            update_cache: yes
+            pkg:
+            - docker-ce=18.06.3~ce~3-0~ubuntu
+            - kubeadm=1.11.1-00
+            - kubernetes-cni=0.6.0-00
+            - kubelet=1.11.1-00
+      when:
+        - ansible_distribution == "Ubuntu"
+
+    - name: Pull kube main component images  
+      vars:
+        k8sVersion: v1.11.1
+        k8sSourceRepo: k8simgs
+        k8sDestRepo: k8s.gcr.io
+      shell: |
+            docker pull {{k8sSourceRepo}}/{{item}}:{{k8sVersion}}
+            docker tag {{k8sSourceRepo}}/{{item}}:{{k8sVersion}} {{k8sDestRepo}}/{{item}}:{{k8sVersion}}            
+      with_items:
+        - kube-proxy-amd64
+        - kube-scheduler-amd64
+        - kube-controller-manager-amd64
+        - kube-apiserver-amd64
+
+    - name: Pull kube other component images  
+      vars:
+        k8sSourceRepo: k8simgs
+        k8sDestRepo: k8s.gcr.io
+      shell: |
+            docker pull {{k8sSourceRepo}}/{{item}}
+            docker tag {{k8sSourceRepo}}/{{item}} {{k8sDestRepo}}/{{item}}          
+      with_items:
+        - etcd-amd64:3.2.18 
+        - coredns:1.1.3 
+        - pause:3.1 
+        - kubernetes-dashboard-amd64:v1.10.1
+
+- name: kubeadm init
+  hosts: init-node
+  gather_facts: False
+  become: true
+  tasks:
+    - name: kubeadm init
+      shell: |
+        kubeadm reset -f
+        kubeadm init --config kubeadm.yaml 
+      ignore_errors: true
+      register: kubeadm_init_res
+
+    - block:
+        - name: prepare kube config
+          shell: |
+                mkdir -p $HOME/.kube 
+                cp /etc/kubernetes/admin.conf $HOME/.kube/config 
+                chown $(id -u):$(id -g) $HOME/.kube/config 
+
+        - name: deploy weave net
+          shell: |
+                kubectl apply -f weave-daemonset-k8s-1.7.yaml
+
+        - name: deploy k8s-dashboard
+          shell: |
+                kubectl apply -f k8s-dashboard-v1.10.1.yaml
+      when:
+        - kubeadm_init_res is defined
+        - kubeadm_init_res.changed
+        - "'kubeadm join' in kubeadm_init_res.stdout_lines[-1]"
+
+- name: Node(Worker) nodes
+  hosts: node
+  gather_facts: False
+  become: true
+  tasks:
+        
+    - name: kubeadm reset
+      raw: kubeadm reset -f
+
+    - name: kubeadm join
+      raw: "{{ hostvars[groups['init-node'][0]].kubeadm_init_res.stdout_lines[-1] |trim }}"
+      when:
+        - hostvars[groups['init-node'][0]].kubeadm_init_res is defined
+        - hostvars[groups['init-node'][0]].kubeadm_init_res.changed
+        - "'kubeadm join' in hostvars[groups['init-node'][0]].kubeadm_init_res.stdout_lines[-1]"
+
+- name: kubectl deploy rook ceph 
+  hosts: init-node
+  gather_facts: False
+  become: true
+  tasks:
+    - name: kubeadm init
+      shell: |
+        kubectl create -f rook-ceph-common-1.3.yaml
+        kubectl create -f rook-ceph-operator-1.3.yaml
+        kubectl create -f rook-ceph-cluster-1.3.yaml

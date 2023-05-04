@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-storage
+provisioner: fuseim.pri/ifs
+
+#kubectl patch storageclass managed-nfs-storage -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+#设置这个managed-nfs-storage名字的SC为Kubernetes的默认存储后端
+
+# https://www.cnblogs.com/panwenbin-logs/p/12196286.html
+# https://jimmysong.io/kubernetes-handbook/practice/using-nfs-for-persistent-storage.html
+# https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner

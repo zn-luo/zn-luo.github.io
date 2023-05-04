@@ -1,0 +1,8 @@
+[master]
+node1 ansible_ssh_user=lzn ansible_ssh_pass="123456" ansible_sudo_pass=123456
+
+[init-node]
+node1 ansible_ssh_user=lzn ansible_ssh_pass="123456" ansible_sudo_pass=123456
+
+[node]
+node[2:3] ansible_ssh_user=lzn ansible_ssh_pass="123456" ansible_sudo_pass=123456

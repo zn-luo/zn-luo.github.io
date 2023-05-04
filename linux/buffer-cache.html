@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Buffer/Cache | LZN Site</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/imgs/favicon.ico">
+    <meta name="description" content="个人站点">
+    
+    <link rel="preload" href="/assets/css/0.styles.3de4940c.css" as="style"><link rel="preload" href="/assets/js/app.76dce139.js" as="script"><link rel="preload" href="/assets/js/2.65d1ea6a.js" as="script"><link rel="preload" href="/assets/js/74.282e79aa.js" as="script"><link rel="prefetch" href="/assets/js/10.f363d7a9.js"><link rel="prefetch" href="/assets/js/100.edc24afb.js"><link rel="prefetch" href="/assets/js/101.d0c00817.js"><link rel="prefetch" href="/assets/js/102.5b47000c.js"><link rel="prefetch" href="/assets/js/103.26d52648.js"><link rel="prefetch" href="/assets/js/104.741d6b0d.js"><link rel="prefetch" href="/assets/js/105.bae7ace1.js"><link rel="prefetch" href="/assets/js/106.79f74c57.js"><link rel="prefetch" href="/assets/js/107.58be7d19.js"><link rel="prefetch" href="/assets/js/108.b738c1b6.js"><link rel="prefetch" href="/assets/js/11.71bd09be.js"><link rel="prefetch" href="/assets/js/12.892d02f2.js"><link rel="prefetch" href="/assets/js/13.2b96c30f.js"><link rel="prefetch" href="/assets/js/14.e1294fee.js"><link rel="prefetch" href="/assets/js/15.062b1f62.js"><link rel="prefetch" href="/assets/js/16.01c8e093.js"><link rel="prefetch" href="/assets/js/17.9c47891c.js"><link rel="prefetch" href="/assets/js/18.78965dc7.js"><link rel="prefetch" href="/assets/js/19.eeed5cd1.js"><link rel="prefetch" href="/assets/js/20.381ef23c.js"><link rel="prefetch" href="/assets/js/21.08cdcd43.js"><link rel="prefetch" href="/assets/js/22.e2bf9e5b.js"><link rel="prefetch" href="/assets/js/23.662f761f.js"><link rel="prefetch" href="/assets/js/24.1ccea966.js"><link rel="prefetch" href="/assets/js/25.8e79614c.js"><link rel="prefetch" href="/assets/js/26.feff2021.js"><link rel="prefetch" href="/assets/js/27.33082434.js"><link rel="prefetch" href="/assets/js/28.2168589b.js"><link rel="prefetch" href="/assets/js/29.397d5d79.js"><link rel="prefetch" href="/assets/js/3.4ca457c9.js"><link rel="prefetch" href="/assets/js/30.2d3a2c75.js"><link rel="prefetch" href="/assets/js/31.04c336a7.js"><link rel="prefetch" href="/assets/js/32.c0bd7da9.js"><link rel="prefetch" href="/assets/js/33.d913ecbd.js"><link rel="prefetch" href="/assets/js/34.07223001.js"><link rel="prefetch" href="/assets/js/35.e8dbb976.js"><link rel="prefetch" href="/assets/js/36.e8327aca.js"><link rel="prefetch" href="/assets/js/37.17d34b8c.js"><link rel="prefetch" href="/assets/js/38.691eb772.js"><link rel="prefetch" href="/assets/js/39.6e6beb2c.js"><link rel="prefetch" href="/assets/js/4.8db7f159.js"><link rel="prefetch" href="/assets/js/40.16557734.js"><link rel="prefetch" href="/assets/js/41.bb7071fe.js"><link rel="prefetch" href="/assets/js/42.aca02efe.js"><link rel="prefetch" href="/assets/js/43.aa01c063.js"><link rel="prefetch" href="/assets/js/44.58e9392d.js"><link rel="prefetch" href="/assets/js/45.f497ea75.js"><link rel="prefetch" href="/assets/js/46.469e079f.js"><link rel="prefetch" href="/assets/js/47.78530ab6.js"><link rel="prefetch" href="/assets/js/48.bf2041c8.js"><link rel="prefetch" href="/assets/js/49.0b1af9c6.js"><link rel="prefetch" href="/assets/js/5.3681c803.js"><link rel="prefetch" href="/assets/js/50.fa97f9be.js"><link rel="prefetch" href="/assets/js/51.a54aa091.js"><link rel="prefetch" href="/assets/js/52.5a3c48ea.js"><link rel="prefetch" href="/assets/js/53.888ece1d.js"><link rel="prefetch" href="/assets/js/54.26f524b3.js"><link rel="prefetch" href="/assets/js/55.54e446a4.js"><link rel="prefetch" href="/assets/js/56.e2faf04d.js"><link rel="prefetch" href="/assets/js/57.ce960347.js"><link rel="prefetch" href="/assets/js/58.5b3882ae.js"><link rel="prefetch" href="/assets/js/59.2dfa6ca9.js"><link rel="prefetch" href="/assets/js/6.4cd6b74d.js"><link rel="prefetch" href="/assets/js/60.1303f306.js"><link rel="prefetch" href="/assets/js/61.8f68dc8f.js"><link rel="prefetch" href="/assets/js/62.705e1574.js"><link rel="prefetch" href="/assets/js/63.38cc3e82.js"><link rel="prefetch" href="/assets/js/64.082ea887.js"><link rel="prefetch" href="/assets/js/65.ff07efba.js"><link rel="prefetch" href="/assets/js/66.f7eb56ae.js"><link rel="prefetch" href="/assets/js/67.fe32599e.js"><link rel="prefetch" href="/assets/js/68.e0def9ff.js"><link rel="prefetch" href="/assets/js/69.15e840bd.js"><link rel="prefetch" href="/assets/js/7.878a061c.js"><link rel="prefetch" href="/assets/js/70.c6f35ca6.js"><link rel="prefetch" href="/assets/js/71.6a426671.js"><link rel="prefetch" href="/assets/js/72.c6f67bed.js"><link rel="prefetch" href="/assets/js/73.70b67b2d.js"><link rel="prefetch" href="/assets/js/75.d91b26ee.js"><link rel="prefetch" href="/assets/js/76.59c96d29.js"><link rel="prefetch" href="/assets/js/77.4e644531.js"><link rel="prefetch" href="/assets/js/78.b11cde88.js"><link rel="prefetch" href="/assets/js/79.14ae6869.js"><link rel="prefetch" href="/assets/js/8.180881d2.js"><link rel="prefetch" href="/assets/js/80.32bbcee6.js"><link rel="prefetch" href="/assets/js/81.bf732806.js"><link rel="prefetch" href="/assets/js/82.b1723203.js"><link rel="prefetch" href="/assets/js/83.3685f3da.js"><link rel="prefetch" href="/assets/js/84.90dd405b.js"><link rel="prefetch" href="/assets/js/85.7ccad8e4.js"><link rel="prefetch" href="/assets/js/86.aaf03aed.js"><link rel="prefetch" href="/assets/js/87.77554ff8.js"><link rel="prefetch" href="/assets/js/88.e5fd103a.js"><link rel="prefetch" href="/assets/js/89.ca35a6e7.js"><link rel="prefetch" href="/assets/js/9.4a7fd8a8.js"><link rel="prefetch" href="/assets/js/90.c2c05e53.js"><link rel="prefetch" href="/assets/js/91.c0820971.js"><link rel="prefetch" href="/assets/js/92.eebba8e3.js"><link rel="prefetch" href="/assets/js/93.ef4abcdb.js"><link rel="prefetch" href="/assets/js/94.5c67fd1a.js"><link rel="prefetch" href="/assets/js/95.0597160e.js"><link rel="prefetch" href="/assets/js/96.da0bbef9.js"><link rel="prefetch" href="/assets/js/97.72862b7b.js"><link rel="prefetch" href="/assets/js/98.a5669085.js"><link rel="prefetch" href="/assets/js/99.5abfe185.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.3de4940c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">LZN Site</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开源站点" class="dropdown-title"><span class="title">开源站点</span> <span class="arrow down"></span></button> <button type="button" aria-label="开源站点" class="mobile-dropdown-title"><span class="title">开源站点</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zn-luo/zn-luo.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://my.oschina.net/jennerlo" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  OSCHINA
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端" class="mobile-dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontEnd/vue/vue-event.html" class="nav-link">
+  事件
+</a></li><li class="dropdown-subitem"><a href="/frontEnd/vue/vue-property.html" class="nav-link">
+  属性
+</a></li><li class="dropdown-subitem"><a href="/frontEnd/vue/vue-slot.html" class="nav-link">
+  插槽
+</a></li><li class="dropdown-subitem"><a href="/frontEnd/vue/bind-flow.html" class="nav-link">
+  双向绑定和单向数据流
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其它
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontEnd/close-browser-hsts.html" class="nav-link">
+  关闭浏览器的HSTS功能
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="服务端" class="dropdown-title"><span class="title">服务端</span> <span class="arrow down"></span></button> <button type="button" aria-label="服务端" class="mobile-dropdown-title"><span class="title">服务端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          linux
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/linux/commonCmds/" class="nav-link">
+  常用命令
+</a></li><li class="dropdown-subitem"><a href="/linux/buffer-cache.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Buffer/Cache
+</a></li><li class="dropdown-subitem"><a href="/linux/performance/resist-ddos.html" class="nav-link">
+  缓解DDoS攻击的方法
+</a></li><li class="dropdown-subitem"><a href="/linux/performance/load-average.html" class="nav-link">
+  平均负载
+</a></li></ul></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/windows/manage-system-certs.html" class="nav-link">
+  windows查看系统证书
+</a></li><li class="dropdown-subitem"><a href="/windows/vpn-ipsec-gateway.html" class="nav-link">
+  win10的VPN无法连接ipsec访问外网的解决方法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          运维
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/devops/netfix.html" class="nav-link">
+  膜拜Netfix
+</a></li><li class="dropdown-subitem"><a href="/devops/microsoft-core.html" class="nav-link">
+  微服务
+</a></li><li class="dropdown-subitem"><a href="/devops/standardized-systems-and-models.html" class="nav-link">
+  将工作标准化
+</a></li><li class="dropdown-subitem"><a href="/devops/cmdb.html" class="nav-link">
+  CMDB
+</a></li><li class="dropdown-subitem"><a href="/devops/build-devops-structure.html" class="nav-link">
+  如何打造运维组织架构
+</a></li><li class="dropdown-subitem"><a href="/devops/ha-architecture-exploration-implementation.html" class="nav-link">
+  高可用架构的探索与实现
+</a></li><li class="dropdown-subitem"><a href="/devops/keepalived.html" class="nav-link">
+  高可用组件keepalived
+</a></li><li class="dropdown-subitem"><a href="/devops/logrotate.html" class="nav-link">
+  日志文件管理工具logrotate
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="网络" class="dropdown-title"><span class="title">网络</span> <span class="arrow down"></span></button> <button type="button" aria-label="网络" class="mobile-dropdown-title"><span class="title">网络</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          http
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/network/http-net/uri-url.html" class="nav-link">
+  URI与URL
+</a></li><li class="dropdown-subitem"><a href="/network/http-net/web-7-key-properties.html" class="nav-link">
+  Web架构的七大关键属性
+</a></li><li class="dropdown-subitem"><a href="/network/http-net/uri-encoding.html" class="nav-link">
+  URI编码
+</a></li><li class="dropdown-subitem"><a href="/network/http-net/request-line.html" class="nav-link">
+  请求行
+</a></li><li class="dropdown-subitem"><a href="/network/http-net/response-code.html" class="nav-link">
+  HTTP响应状态码
+</a></li><li class="dropdown-subitem"><a href="/network/http-net/chrome-devtools.html" class="nav-link">
+  Chrome浏览器开发者工具
+</a></li></ul></li><li class="dropdown-item"><h4>
+          tcp
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/network/tcp-net/tcp-keepalive.html" class="nav-link">
+  tcp-keepalive
+</a></li><li class="dropdown-subitem"><a href="/network/tcp-net/tcp-three-way-handshake.html" class="nav-link">
+  TCP三次握手
+</a></li><li class="dropdown-subitem"><a href="/network/tcp-net/data-transmission-mss.html" class="nav-link">
+  数据传输与MSS分段
+</a></li><li class="dropdown-subitem"><a href="/network/tcp-net/tcp-performance-security.html" class="nav-link">
+  tcp握手的性能优化与安全
+</a></li></ul></li><li class="dropdown-item"><h4>
+          tr-069
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/network/TR-069/introduction.html" class="nav-link">
+  介绍
+</a></li><li class="dropdown-subitem"><a href="/network/TR-069/architecture.html" class="nav-link">
+  架构
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          mongodb
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dbs/mongodb/" class="nav-link">
+  切片集群架构
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/aggregation.html" class="nav-link">
+  聚合
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/basics-model-design.html" class="nav-link">
+  模型设计基础
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/shard-design.html" class="nav-link">
+  分片集群的设计
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/specification.html" class="nav-link">
+  规范
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/built-in-roles.html" class="nav-link">
+  内置角色
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/user-defined-roles.html" class="nav-link">
+  自定义角色
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/back-recovery.html" class="nav-link">
+  备份与恢复
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/commands.html" class="nav-link">
+  常用命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          redis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dbs/redis/redis-disk-load.html" class="nav-link">
+  redis持久化磁盘负载
+</a></li><li class="dropdown-subitem"><a href="/dbs/redis/string.html" class="nav-link">
+  redis字条串类型
+</a></li><li class="dropdown-subitem"><a href="/dbs/redis/eviction-policies.html" class="nav-link">
+  Redis内存驱逐策略
+</a></li><li class="dropdown-subitem"><a href="/dbs/redis/scan.html" class="nav-link">
+  批量遍历命令scan
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构与设计" class="dropdown-title"><span class="title">架构与设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构与设计" class="mobile-dropdown-title"><span class="title">架构与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/architecture/microservice.html" class="nav-link">
+  什么是微服务
+</a></li><li class="dropdown-subitem"><a href="/architecture/microservice-advantages-disavantages.html" class="nav-link">
+  微服务利弊
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designPattern/5-elements.html" class="nav-link">
+  5大要素
+</a></li><li class="dropdown-subitem"><a href="/designPattern/oo.html" class="nav-link">
+  面向对象
+</a></li><li class="dropdown-subitem"><a href="/designPattern/factory/" class="nav-link">
+  工厂
+</a></li><li class="dropdown-subitem"><a href="/designPattern/singleton/" class="nav-link">
+  单例
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/algorithm/data-structure.html" class="nav-link">
+  数据结构与算法
+</a></li><li class="dropdown-item"><!----> <a href="/algorithm/time-complexity.html" class="nav-link">
+  时间复杂度
+</a></li><li class="dropdown-item"><!----> <a href="/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/algorithm/example.html" class="nav-link">
+  算法实现例子
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云" class="dropdown-title"><span class="title">云</span> <span class="arrow down"></span></button> <button type="button" aria-label="云" class="mobile-dropdown-title"><span class="title">云</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          k8s
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/k8s/container-basis.html" class="nav-link">
+  容器基础
+</a></li><li class="dropdown-subitem"><a href="/k8s/k8s-base-overview.html" class="nav-link">
+  K8S概述
+</a></li><li class="dropdown-subitem"><a href="/k8s/pod.html" class="nav-link">
+  pod
+</a></li><li class="dropdown-subitem"><a href="/k8s/resources-type-aliases.html" class="nav-link">
+  K8S支持的资源类型及缩写
+</a></li><li class="dropdown-subitem"><a href="/k8s/docker-bridge.html" class="nav-link">
+  docker0网桥
+</a></li><li class="dropdown-subitem"><a href="/k8s/change-cgroup.html" class="nav-link">
+  修改docker与kubelet的Cgroup驱动
+</a></li><li class="dropdown-subitem"><a href="/k8s/kubeadmin-install-k8s-v1.11.1.html" class="nav-link">
+  kubeadmin+ansible安装k8s v.111.1
+</a></li><li class="dropdown-subitem"><a href="/k8s/calico-bgp-not-established.html" class="nav-link">
+  calico网络故障(BIRD is not ready)
+</a></li><li class="dropdown-subitem"><a href="/k8s/scale-keepalive.html" class="nav-link">
+  长连接服务新扩容的pod无法接收请求
+</a></li><li class="dropdown-subitem"><a href="/k8s/cert-manager-route53-dns01.html" class="nav-link">
+  使用cert-manager签发Let's Encrypt免费证书
+</a></li></ul></li><li class="dropdown-item"><h4>
+          AWS
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/aws/ec2/instance-not-restart.html" class="nav-link">
+  AWS云主机重启后无法ssh登陆
+</a></li><li class="dropdown-subitem"><a href="/aws/iot-core/iot-core-security/iot-core-policy/" class="nav-link">
+  IoT Core 策略
+</a></li><li class="dropdown-subitem"><a href="/aws/iot-core/iot-core-security/iot-core-policy/policy-actions.html" class="nav-link">
+  IoT Core 策略 actions
+</a></li><li class="dropdown-subitem"><a href="/aws/iot-core/iot-core-security/iot-core-policy/policy-variables.html" class="nav-link">
+  AWS IoT Core 策略变量
+</a></li><li class="dropdown-subitem"><a href="/aws/iot-core/iot-core-security/iot-core-policy/action-resources.html" class="nav-link">
+  AWS IoT Core action resources
+</a></li><li class="dropdown-subitem"><a href="/aws/iot-core/iot-core-security/iot-core-policy/thing-policy-variables.html" class="nav-link">
+  物品(Thing)策略变量
+</a></li><li class="dropdown-subitem"><a href="/aws/Route53/transferring-domains/" class="nav-link">
+  Route53 域名转移步骤
+</a></li><li class="dropdown-subitem"><a href="/aws/Route53/transferring-domains/Transfer-requirements-for-top-leveldomain.html" class="nav-link">
+  Route53 顶级域名的转移要求
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="箴言" class="dropdown-title"><span class="title">箴言</span> <span class="arrow down"></span></button> <button type="button" aria-label="箴言" class="mobile-dropdown-title"><span class="title">箴言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/motto/job-motto.html" class="nav-link">
+  职场箴言
+</a></li><li class="dropdown-item"><h4>
+          典故箴言
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/motto/allusion/feedforward-control.html" class="nav-link">
+  事前控制
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/external-link.html" class="nav-link">
+  外部链接
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开源站点" class="dropdown-title"><span class="title">开源站点</span> <span class="arrow down"></span></button> <button type="button" aria-label="开源站点" class="mobile-dropdown-title"><span class="title">开源站点</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zn-luo/zn-luo.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://my.oschina.net/jennerlo" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  OSCHINA
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端" class="mobile-dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontEnd/vue/vue-event.html" class="nav-link">
+  事件
+</a></li><li class="dropdown-subitem"><a href="/frontEnd/vue/vue-property.html" class="nav-link">
+  属性
+</a></li><li class="dropdown-subitem"><a href="/frontEnd/vue/vue-slot.html" class="nav-link">
+  插槽
+</a></li><li class="dropdown-subitem"><a href="/frontEnd/vue/bind-flow.html" class="nav-link">
+  双向绑定和单向数据流
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其它
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontEnd/close-browser-hsts.html" class="nav-link">
+  关闭浏览器的HSTS功能
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="服务端" class="dropdown-title"><span class="title">服务端</span> <span class="arrow down"></span></button> <button type="button" aria-label="服务端" class="mobile-dropdown-title"><span class="title">服务端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          linux
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/linux/commonCmds/" class="nav-link">
+  常用命令
+</a></li><li class="dropdown-subitem"><a href="/linux/buffer-cache.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Buffer/Cache
+</a></li><li class="dropdown-subitem"><a href="/linux/performance/resist-ddos.html" class="nav-link">
+  缓解DDoS攻击的方法
+</a></li><li class="dropdown-subitem"><a href="/linux/performance/load-average.html" class="nav-link">
+  平均负载
+</a></li></ul></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/windows/manage-system-certs.html" class="nav-link">
+  windows查看系统证书
+</a></li><li class="dropdown-subitem"><a href="/windows/vpn-ipsec-gateway.html" class="nav-link">
+  win10的VPN无法连接ipsec访问外网的解决方法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          运维
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/devops/netfix.html" class="nav-link">
+  膜拜Netfix
+</a></li><li class="dropdown-subitem"><a href="/devops/microsoft-core.html" class="nav-link">
+  微服务
+</a></li><li class="dropdown-subitem"><a href="/devops/standardized-systems-and-models.html" class="nav-link">
+  将工作标准化
+</a></li><li class="dropdown-subitem"><a href="/devops/cmdb.html" class="nav-link">
+  CMDB
+</a></li><li class="dropdown-subitem"><a href="/devops/build-devops-structure.html" class="nav-link">
+  如何打造运维组织架构
+</a></li><li class="dropdown-subitem"><a href="/devops/ha-architecture-exploration-implementation.html" class="nav-link">
+  高可用架构的探索与实现
+</a></li><li class="dropdown-subitem"><a href="/devops/keepalived.html" class="nav-link">
+  高可用组件keepalived
+</a></li><li class="dropdown-subitem"><a href="/devops/logrotate.html" class="nav-link">
+  日志文件管理工具logrotate
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="网络" class="dropdown-title"><span class="title">网络</span> <span class="arrow down"></span></button> <button type="button" aria-label="网络" class="mobile-dropdown-title"><span class="title">网络</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          http
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/network/http-net/uri-url.html" class="nav-link">
+  URI与URL
+</a></li><li class="dropdown-subitem"><a href="/network/http-net/web-7-key-properties.html" class="nav-link">
+  Web架构的七大关键属性
+</a></li><li class="dropdown-subitem"><a href="/network/http-net/uri-encoding.html" class="nav-link">
+  URI编码
+</a></li><li class="dropdown-subitem"><a href="/network/http-net/request-line.html" class="nav-link">
+  请求行
+</a></li><li class="dropdown-subitem"><a href="/network/http-net/response-code.html" class="nav-link">
+  HTTP响应状态码
+</a></li><li class="dropdown-subitem"><a href="/network/http-net/chrome-devtools.html" class="nav-link">
+  Chrome浏览器开发者工具
+</a></li></ul></li><li class="dropdown-item"><h4>
+          tcp
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/network/tcp-net/tcp-keepalive.html" class="nav-link">
+  tcp-keepalive
+</a></li><li class="dropdown-subitem"><a href="/network/tcp-net/tcp-three-way-handshake.html" class="nav-link">
+  TCP三次握手
+</a></li><li class="dropdown-subitem"><a href="/network/tcp-net/data-transmission-mss.html" class="nav-link">
+  数据传输与MSS分段
+</a></li><li class="dropdown-subitem"><a href="/network/tcp-net/tcp-performance-security.html" class="nav-link">
+  tcp握手的性能优化与安全
+</a></li></ul></li><li class="dropdown-item"><h4>
+          tr-069
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/network/TR-069/introduction.html" class="nav-link">
+  介绍
+</a></li><li class="dropdown-subitem"><a href="/network/TR-069/architecture.html" class="nav-link">
+  架构
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          mongodb
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dbs/mongodb/" class="nav-link">
+  切片集群架构
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/aggregation.html" class="nav-link">
+  聚合
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/basics-model-design.html" class="nav-link">
+  模型设计基础
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/shard-design.html" class="nav-link">
+  分片集群的设计
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/specification.html" class="nav-link">
+  规范
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/built-in-roles.html" class="nav-link">
+  内置角色
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/user-defined-roles.html" class="nav-link">
+  自定义角色
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/back-recovery.html" class="nav-link">
+  备份与恢复
+</a></li><li class="dropdown-subitem"><a href="/dbs/mongodb/commands.html" class="nav-link">
+  常用命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          redis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dbs/redis/redis-disk-load.html" class="nav-link">
+  redis持久化磁盘负载
+</a></li><li class="dropdown-subitem"><a href="/dbs/redis/string.html" class="nav-link">
+  redis字条串类型
+</a></li><li class="dropdown-subitem"><a href="/dbs/redis/eviction-policies.html" class="nav-link">
+  Redis内存驱逐策略
+</a></li><li class="dropdown-subitem"><a href="/dbs/redis/scan.html" class="nav-link">
+  批量遍历命令scan
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构与设计" class="dropdown-title"><span class="title">架构与设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构与设计" class="mobile-dropdown-title"><span class="title">架构与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/architecture/microservice.html" class="nav-link">
+  什么是微服务
+</a></li><li class="dropdown-subitem"><a href="/architecture/microservice-advantages-disavantages.html" class="nav-link">
+  微服务利弊
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designPattern/5-elements.html" class="nav-link">
+  5大要素
+</a></li><li class="dropdown-subitem"><a href="/designPattern/oo.html" class="nav-link">
+  面向对象
+</a></li><li class="dropdown-subitem"><a href="/designPattern/factory/" class="nav-link">
+  工厂
+</a></li><li class="dropdown-subitem"><a href="/designPattern/singleton/" class="nav-link">
+  单例
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/algorithm/data-structure.html" class="nav-link">
+  数据结构与算法
+</a></li><li class="dropdown-item"><!----> <a href="/algorithm/time-complexity.html" class="nav-link">
+  时间复杂度
+</a></li><li class="dropdown-item"><!----> <a href="/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/algorithm/example.html" class="nav-link">
+  算法实现例子
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云" class="dropdown-title"><span class="title">云</span> <span class="arrow down"></span></button> <button type="button" aria-label="云" class="mobile-dropdown-title"><span class="title">云</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          k8s
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/k8s/container-basis.html" class="nav-link">
+  容器基础
+</a></li><li class="dropdown-subitem"><a href="/k8s/k8s-base-overview.html" class="nav-link">
+  K8S概述
+</a></li><li class="dropdown-subitem"><a href="/k8s/pod.html" class="nav-link">
+  pod
+</a></li><li class="dropdown-subitem"><a href="/k8s/resources-type-aliases.html" class="nav-link">
+  K8S支持的资源类型及缩写
+</a></li><li class="dropdown-subitem"><a href="/k8s/docker-bridge.html" class="nav-link">
+  docker0网桥
+</a></li><li class="dropdown-subitem"><a href="/k8s/change-cgroup.html" class="nav-link">
+  修改docker与kubelet的Cgroup驱动
+</a></li><li class="dropdown-subitem"><a href="/k8s/kubeadmin-install-k8s-v1.11.1.html" class="nav-link">
+  kubeadmin+ansible安装k8s v.111.1
+</a></li><li class="dropdown-subitem"><a href="/k8s/calico-bgp-not-established.html" class="nav-link">
+  calico网络故障(BIRD is not ready)
+</a></li><li class="dropdown-subitem"><a href="/k8s/scale-keepalive.html" class="nav-link">
+  长连接服务新扩容的pod无法接收请求
+</a></li><li class="dropdown-subitem"><a href="/k8s/cert-manager-route53-dns01.html" class="nav-link">
+  使用cert-manager签发Let's Encrypt免费证书
+</a></li></ul></li><li class="dropdown-item"><h4>
+          AWS
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/aws/ec2/instance-not-restart.html" class="nav-link">
+  AWS云主机重启后无法ssh登陆
+</a></li><li class="dropdown-subitem"><a href="/aws/iot-core/iot-core-security/iot-core-policy/" class="nav-link">
+  IoT Core 策略
+</a></li><li class="dropdown-subitem"><a href="/aws/iot-core/iot-core-security/iot-core-policy/policy-actions.html" class="nav-link">
+  IoT Core 策略 actions
+</a></li><li class="dropdown-subitem"><a href="/aws/iot-core/iot-core-security/iot-core-policy/policy-variables.html" class="nav-link">
+  AWS IoT Core 策略变量
+</a></li><li class="dropdown-subitem"><a href="/aws/iot-core/iot-core-security/iot-core-policy/action-resources.html" class="nav-link">
+  AWS IoT Core action resources
+</a></li><li class="dropdown-subitem"><a href="/aws/iot-core/iot-core-security/iot-core-policy/thing-policy-variables.html" class="nav-link">
+  物品(Thing)策略变量
+</a></li><li class="dropdown-subitem"><a href="/aws/Route53/transferring-domains/" class="nav-link">
+  Route53 域名转移步骤
+</a></li><li class="dropdown-subitem"><a href="/aws/Route53/transferring-domains/Transfer-requirements-for-top-leveldomain.html" class="nav-link">
+  Route53 顶级域名的转移要求
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="箴言" class="dropdown-title"><span class="title">箴言</span> <span class="arrow down"></span></button> <button type="button" aria-label="箴言" class="mobile-dropdown-title"><span class="title">箴言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/motto/job-motto.html" class="nav-link">
+  职场箴言
+</a></li><li class="dropdown-item"><h4>
+          典故箴言
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/motto/allusion/feedforward-control.html" class="nav-link">
+  事前控制
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/external-link.html" class="nav-link">
+  外部链接
+</a></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="buffer-cache"><a href="#buffer-cache" class="header-anchor">#</a> Buffer/Cache</h1> <h2 id="cache"><a href="#cache" class="header-anchor">#</a> Cache</h2> <p>Cache叫高速缓存存储器，也叫高速缓存，即缓存。它位于CPU和内存之间的容量较小但速度很快的存储器。因为CPU的速度远远高于内存的速度，CPU从内存中读取数据需要等待很长的时间，而Cache保存着CPU重复使用的数据，直接从Cache读取数据会更快，减少CPU等待的时间，提高了系统的性能。</p> <p>cache是为了提高CPU和内存之间的数据交换速度而设计的。</p> <p>Cache是内核页缓存和Slab用到的内存，对应的是/proc/meminfo中的Cached与SReclaimable之和。</p> <h2 id="buffer"><a href="#buffer" class="header-anchor">#</a> Buffer</h2> <p>Buffer叫缓冲区，用于存储速度不同步的设备或优先级不同的设备之间传输数据。通过buffer可以减少进程间通信需要等待的时间，当存储速度快的设备与存储速度慢的设备进行通信时，存储慢的数据先把数据存放到buffer,达到一定程度后存储快的设备再读取buffer的数据，在此期间存储快的设备CPU可以干其他的事情。</p> <p>buffer是为了提高内存和I/O设备(如硬盘等)之间的数据交换速度而设计的。</p> <p>buffer是内核缓冲区用到的内存，对应的是/proc/meminfo中的Buffers值。</p> <h2 id="两者的对比"><a href="#两者的对比" class="header-anchor">#</a> 两者的对比</h2> <ul><li>cache是cpu与内存间的缓冲，buffer是内存与磁盘间的缓冲，都是为了解决速度不对等而设计的。
+<ul><li>cache是把读取过的数据缓存起来，重新读取时若命中就不需要去读硬盘了，或没命中则读硬盘。被缓存的数据会根据读取频率进行组织，把最频繁读取的内容放在最容易找到的位置，把不再读取的内容不断往后排，直至删除。</li> <li>buffer是根据磁盘的读写设计的，把分散的写操作集中进行，减少磁盘碎片的反复寻道，从而提高系统性能。linux有一个守护进程定期清空缓冲内容(即写入磁盘)，也可以通过sync命令手动清空缓冲。</li></ul></li> <li>buffer是即将要被写入磁盘的，而cache是被从磁盘中读出来的
+<ul><li>buffer是由各种进程分配的，被用在如输入队列等方面。如某个进程需要读入多个字段内容，在所有字段被读入完整前，进程把先前读入的字段放在buffer中保存。</li> <li>cache经常被用在磁盘的I/O请求上，如有多个进程要访问某个文件，于是该文件便被做成cache以方便下次访问，这样可提高系统性能。</li></ul></li></ul> <h2 id="释放cache"><a href="#释放cache" class="header-anchor">#</a> 释放cache</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">echo</span> <span class="token number">1</span> <span class="token operator">&gt;</span> /proc/sys/vm/drop_caches <span class="token comment">#释放页缓存</span>
+<span class="token builtin class-name">echo</span> <span class="token number">2</span> <span class="token operator">&gt;</span> /proc/sys/vm/drop_caches <span class="token comment">#释放目录项和inodes</span>
+<span class="token builtin class-name">echo</span> <span class="token number">3</span> <span class="token operator">&gt;</span> /proc/sys/vm/drop_caches <span class="token comment">#释放页缓存、目录项和inodes</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.76dce139.js" defer></script><script src="/assets/js/2.65d1ea6a.js" defer></script><script src="/assets/js/74.282e79aa.js" defer></script>
+  </body>
+</html>

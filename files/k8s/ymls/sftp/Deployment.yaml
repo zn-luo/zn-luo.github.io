@@ -1,0 +1,78 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: sftp-v1
+  namespace: tct-dev
+  labels:
+    app: sftp
+    version: v1
+  annotations:
+    deployment.kubernetes.io/revision: '15'
+    kubesphere.io/creator: lzn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sftp
+      version: v1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: sftp
+        version: v1
+      annotations:
+        kubesphere.io/restartedAt: '2022-04-06T08:52:09.544Z'
+        logging.kubesphere.io/logsidecar-config: '{}'
+    spec:
+      volumes:
+        - name: volume-psng0c
+          configMap:
+            name: sftp
+            items:
+              - key: users.conf
+                path: users.conf
+            defaultMode: 420
+        - name: sftp-home
+          hostPath:
+            path: /data/k8s/sftp
+            type: ''
+        - name: opengrok-src
+          hostPath:
+            path: /data/k8s/opengrok/src
+            type: ''
+      containers:
+        - name: container-o89n25
+          image: 'atmoz/sftp:alpine'
+          ports:
+            - name: tcp-22
+              containerPort: 22
+              protocol: TCP
+          resources: {}
+          volumeMounts:
+            - name: volume-psng0c
+              readOnly: true
+              mountPath: /etc/sftp
+            - name: sftp-home
+              mountPath: /home
+            - name: opengrok-src
+              mountPath: /home/opengrok/src
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        kubernetes.io/hostname: ks-node1
+      serviceAccountName: default
+      serviceAccount: default
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

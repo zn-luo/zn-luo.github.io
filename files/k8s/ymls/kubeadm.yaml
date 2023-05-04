@@ -1,0 +1,9 @@
+apiVersion: kubeadm.k8s.io/v1alpha1 
+kind: MasterConfiguration 
+controllerManagerExtraArgs:   
+  horizontal-pod-autoscaler-use-rest-clients: "true"  # 设置kube-controller-manager 能够使用自定义资源（Custom Metrics）进行 自动水平扩展
+  horizontal-pod-autoscaler-sync-period: "10s"   
+  node-monitor-grace-period: "10s" 
+apiServerExtraArgs:   
+  runtime-config: "api/all=true" 
+kubernetesVersion: "v1.11.1" 
