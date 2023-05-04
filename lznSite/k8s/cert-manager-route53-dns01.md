@@ -141,3 +141,5 @@ kubectl get pods --namespace cert-manager
         - test-domain.com
         secretName: test-domain-com-tls
     ```
+
+<Vssue :title="$title" :options="{ locale: 'zh' }" />
